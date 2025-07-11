@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/cuenta_microsoft.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Nombre al Dispositivo</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <img src="../../img/w11/iconos_windows.png" alt="Iconos de aplicaciones de Microsoft" class="benefits-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content scrollable">
+                <h1 class="title">¿Qué es una cuenta de Microsoft?</h1>
+
+                <div class="info-sections">
+                    <div class="info-section-item">
+                        <h2>Una cuenta para todos los servicios de Microsoft</h2>
+                        <p>Desde Outlook hasta Microsoft Edge, Windows hasta Xbox, una cuenta te conecta a todo Microsoft. Accede a todos tus archivos, aplicaciones y servicios de Microsoft en cualquier momento y lugar.</p>
+                    </div>
+
+                    <div class="info-section-item">
+                        <h2>Tu cuenta, tus datos. Más seguro</h2>
+                        <p>Mantén las pestañas en tus suscripciones e historial de pedidos, organiza la vida digital de tu familia, actualiza tu configuración de privacidad y seguridad, y realiza un seguimiento del estado y la seguridad de tus dispositivos.</p>
+                    </div>
+
+                    <div class="info-section-item">
+                        <h2>¿No estás seguro de si tienes una cuenta de Microsoft?</h2>
+                        <p>Ya tienes una cuenta Microsoft si usas una dirección de correo electrónico, un id. de Skype o un número de teléfono celular para iniciar sesión en servicios Microsoft como Xbox, Outlook.com o OneDrive. La dirección de correo electrónico que usas para tu cuenta Microsoft puede ser de Outlook.com, Gmail, Yahoo! u otros proveedores. Si creas una nueva cuenta Microsoft, se asociará con tu cuenta local. Puedes usarla para iniciar sesión en productos y servicios de Microsoft, pero no reemplazará la cuenta local que usas actualmente para iniciar sesión en tu dispositivo.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <button class="btn-secondary" id="skipButton">Omitir por ahora</button>
+                <button class="btn-primary" id="backButton">Atrás</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11cuenta_microsoft.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla de INFORMACIÓN DE CUENTA
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_info',
+                    title: "¿Qué es una Cuenta Microsoft?",
+                    content: `
+                        <p>Esta pantalla te ofrece información detallada sobre las ventajas y características de usar una cuenta de Microsoft.</p>
+                        <p>Puedes leerla con calma si lo deseas. Cierra este mensaje para ver el contenido.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_clic_omitir',
+                    title: "Omitir este Paso",
+                    content: `
+                        <p>Para los fines de esta instalación guiada, no crearemos una cuenta de Microsoft.</p>
+                        <p>Por favor, haz clic en el botón <strong>"Omitir por ahora"</strong> para continuar con la configuración de una cuenta local.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'modalClosed'
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+        });
+    </script>
+</body>
+
+</html>

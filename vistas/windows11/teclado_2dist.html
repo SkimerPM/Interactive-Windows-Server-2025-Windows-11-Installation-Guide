@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/teclado_2dist.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalacion Windows 11</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <div class="back-arrow" id="backButton" title="Atrás">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </div>
+            <img src="../../img/w11/teclado_dist.png" alt="Instalación de Windows" class="teclado-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content">
+                <h1 class="title">¿Quieres agregar una segunda distribución de teclado?</h1>
+            </div>
+            
+            <div class="footer">
+                <button class="btn-secondary" id="addButton">Agregar distribución</button>
+                <button class="btn-primary" id="skipButton">Omitir</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11teclado2.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para esta pantalla
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_segundo_teclado',
+                    title: "Añadir otro Teclado (Opcional)",
+                    content: `
+                        <p>¡Hello! El sistema ahora te pregunta si quieres añadir una segunda distribución de teclado.</p>
+                        <p>Esto es muy útil si escribes en varios idiomas, como inglés y español, y quieres cambiar entre ellos fácilmente.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_clic_omitir',
+                    title: "Continuar con un solo Teclado",
+                    content: `
+                        <p>Para esta instalación, continuaremos con la distribución que ya elegimos.</p>
+                        <p>Por favor, haz clic en el botón <strong>"Omitir"</strong> para avanzar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'modalClosed',
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+        });
+    </script>
+
+</body>
+
+</html>

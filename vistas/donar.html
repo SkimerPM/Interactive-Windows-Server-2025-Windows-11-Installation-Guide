@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donar - Simulador Windows 11</title>
+    <link rel="stylesheet" href="/css/donar.css">
+</head>
+
+<body>
+
+    <div class="donacion-container">
+        <div class="donacion-card">
+            <!-- Estado inicial (donación) -->
+            <div class="donacion-view active">
+                <div class="donacion-header">
+                    <div class="logo-container">
+                        <img src="/img/yape-icon.png" alt="Yape" class="yape-logo">
+                        <h2>Contribuir al proyecto</h2>
+                    </div>
+                    <p class="donacion-subtitle">Tu apoyo nos ayuda a seguir mejorando</p>
+                </div>
+
+                <div class="qr-section">
+                    <div class="qr-container">
+                        <img src="/img/yape-qr.jpg" alt="Código QR Yape" class="qr-code">
+                        <div class="qr-overlay"></div>
+                    </div>
+                    <!-- <div class="monto-sugerido">Monto sugerido: <span>S/ 20.00</span></div> -->
+                </div>
+
+                <div class="donacion-info">
+                    <div class="info-line">
+                        <!-- <span class="icon">👤</span> -->
+                        <!-- <span>Felix Diaz</span> -->
+                    </div>
+                    <div class="info-line">
+                        <span class="icon">📱</span>
+                        <span>Celular: <strong class="numero-texto">Es Broma, todo esto fue hecho con cariño para ayudarte :] </strong></span>
+                        <span class="copiado-feedback"></span>
+                    </div>
+                </div>
+
+                <button class="btn btn-volver" onclick="window.location.href='../index.html'">Volver</button>
+            </div>
+
+            <!-- Estado de agradecimiento (oculto inicialmente) -->
+            <!-- Estado de agradecimiento (oculto inicialmente) -->
+            <div class="gracias-view" id="gracias-view">
+                <button class="btn-cerrar" id="btn-cerrar">x</button>
+                <div class="checkmark">✓</div>
+                <h2>¡Donación recibida!</h2>
+                <p class="mensaje-gracias">Gracias por apoyar nuestro trabajo. Tu contribución nos motiva a seguir
+                    mejorando.</p>
+                <div class="detalle-donacion">
+                    <p>Transacción completada</p>
+                    <!-- <p class="monto">S/ 20.00</p> -->
+                </div>
+                <div class="notificacion-botones">
+                    <button class="btn btn-volver" onclick="window.location.href='../index.html'">Volver al
+                        simulador</button>
+                    <!-- <button class="btn btn-secundario" id="btn-cerrar-notificacion">Cerrar</button> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/JS/donar.js"></script>
+</body>
+
+</html>

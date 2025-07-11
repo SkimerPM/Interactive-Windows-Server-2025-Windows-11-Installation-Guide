@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/preparando.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preparando todo</title>
+</head>
+<body>
+    <div class="installer-window">
+        <div class="black-screen-content">
+            <p class="loading-message">Lo estamos preparando todo.</p>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+    // --- Lógica de Redirección Automática ---
+
+    // 1. Tiempo de espera: 5000 milisegundos = 5 segundos
+    const delay = 5000;
+
+    // 2. Página de destino final (cámbiala por tu página del escritorio o de bienvenida)
+    const finalPageUrl = 'finalizando.html'; 
+
+    // 3. Ejecutar la redirección después del tiempo de espera
+    setTimeout(() => {
+        console.log("Preparación finalizada. Redirigiendo al escritorio.");
+        window.location.href = finalPageUrl;
+    }, delay);
+
+});
+    </script>
+</body>
+</html>

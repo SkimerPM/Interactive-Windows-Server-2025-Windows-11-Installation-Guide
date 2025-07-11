@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../css/wserver/particion.css">
+    <link rel="stylesheet" href="../../css/wserver/ventana.css">
+    <title>Configuración de Windows Server</title>
+</head>
+
+<body>
+    <div class="window">
+        <div class="flex flex-item-center flex-content-b header-window">
+            <div class="titulo-barra">Configuración de Windows Server</div>
+            <div class="flex">
+                <div class="btn-window">-</div>
+                <div class="btn-window">[]</div>
+                <div class="btn-window rojo">x</div>
+            </div>
+        </div>
+        <div class="container">
+            
+            <h1>Seleccionar ubicación para instalar Windows Server</h1>
+            
+            <div class="opciones">
+                
+                    <div class="opcion-grupo">
+                        <div class="flex-center"><img class="icon" src="../../icons/refresh.svg" alt=""><a href="#">Refresh</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco.svg" alt=""><a href="#">Load Driver</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco2.svg" alt=""><a class="gris" href="#">Bring Disk Online</a></div>
+                    </div>
+                    <div class="opcion-grupo ">
+                        <div class="flex-center"><img class="icon" src="../../icons/x.svg" alt="icon"><a class="gris" href="#">Delete Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco3.svg" alt="icon"><a id="formatear" class="gris"  href="#">Format Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/mas.svg" alt="icon"><a id="crearParticion"  href="#">Create Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/mas.svg" alt="icon"><a href="#">Extend Partition</a></div>
+                    </div>
+                
+            </div>
+            
+            <div id="apply-cancel-bar" class="none">
+                <label for="tamaño">Tamaño en MB:</label>
+                <input type="text" id="tamaño" value="25..">
+                <button class="btn" id="apply-button">Apply</button>
+                <button onclick="cancelar('apply-cancel-bar')" class="btn" >Cancel</button>
+            </div>
+                    
+            <div class="table-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Nombre</th>
+                            <th>Tamaño total</th>
+                            <th>Espacio disp...</th>
+                            <th>Tipo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr  id="tr1"  class="">
+                            <td>Disco 0 Espacio sin asignar</td>
+                            <td>50.0 GB</td>
+                            <td>50.0 GB</td>
+                            <td>Espacio sin asignar</td>
+                        </tr>
+
+                        <tr id="tr2" class="none">
+                            <td>Disco 0 partición 1</td>
+                            <td>100.0 MB</td>
+                            <td>85.9 MB</td>
+                            <td>Principal</td>
+                        </tr>
+                        <tr id="tr3" class="none">
+                            <td>Disco 0 partición 2</td>
+                            <td>25.0 GB</td>
+                            <td>24.9 GB</td>
+                            <td>Principal</td>
+                        </tr>
+                        <tr id="tr4" class="none">
+                            <td>Disco 0 Espacio sin asignar</td>
+                            <td>24.9 GB</td>
+                            <td>24.9 GB</td>
+                            <td>Espacio sin asignar</td>
+                        </tr>
+                        <tr id="tr5" class="none">
+                            <td>Disco 0 partición 3</td>
+                            <td>24.9 GB</td>
+                            <td>24.8 GB</td>
+                            <td>Principal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="bottoms-bar">
+                <div>
+                    <span>Microsoft</span>
+                    <span>Soporte</span>
+                    <span>Oficio</span>
+                </div>
+                <button id="btnSiguiente" disabled >Siguiente</button>
+            </div>
+        </div>
+    </div>
+    <div id="error-card" class="error-card">
+        <!-- <h3>Atento aquí..</h3>
+        <p><strong>Debes colocar la mitad (mb) del total de espacio:</strong> 25599</p>
+        <p>Intentalo de nuevo, tú puedes.</p> -->
+    </div>
+    <script src="../../JS/script_part.js"></script>
+</body>
+
+</html>

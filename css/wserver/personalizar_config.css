@@ -1,0 +1,96 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 12px;
+    background-color: #f0f0f0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column-reverse;
+    min-height: 100vh;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.window {
+    background-color: #045c9c;
+
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+    color: #c2ced7;
+    max-width: 670px;
+    width: 100%;
+    min-width: 350px;
+    padding: 2rem;
+    position: relative;
+
+
+}
+
+
+.container{
+    color: #f0f0f0;
+}
+
+.title{
+    
+    font-size: 2rem;
+    font-weight: 200;
+    margin-bottom: 1rem;
+}
+
+.form{
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.label-input{
+    width: 332px;
+    display: flex;
+    justify-content: space-between;
+}
+.label-input input{
+    padding: .15rem ;
+    background-color: rgb(11, 93, 151);
+    border: 1.7px solid;
+    border-color: #A6C0DB;
+    color: #c2ced7;
+    outline: none;
+    width: 185px;
+}
+
+input:focus {
+    color: black;
+    background-color: #f0f0f0; 
+}
+
+.password-in div{
+    position: relative;
+}
+.password-in div img{
+    position: absolute;
+    right: 3px;
+    cursor: pointer;
+    width: 20px;
+    margin-top: 1px;
+}
+
+
+.btn{
+
+    padding: .3rem .5rem;
+    margin-top: 8rem;
+    margin-left: 34rem;
+    margin-bottom: 1rem;
+    background-color: rgb(19, 109, 173);
+    border: 1.7px solid #0b5d97;
+    box-shadow: 0 0 3px #26425f91;
+    color: #c2ced7;
+    cursor: pointer;
+}

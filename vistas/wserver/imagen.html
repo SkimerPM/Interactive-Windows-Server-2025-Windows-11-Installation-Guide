@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows Server - Imagen</title>
+    <link rel="stylesheet" href="../../css/wserver/imagen.css">
+    <link rel="stylesheet" href="../../css/wserver/ventana.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows Server</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="main-title">Seleccionar imagen</h1>
+                <p class="subtitle">Selecciona la imagen que quieras instalar.</p>
+                <div class="os-listbox">
+                    <div class="section-label">Sistema operativo:</div>
+                    <div class="os-option selected" data-os="standard">
+                        <div>Windows Server 2025 Standard Evaluation</div>
+                    </div>
+                    <div class="os-option" data-os="standard-desktop">
+                        <div>Windows Server 2025 Standard Evaluation (experiencia de escritorio)</div>
+                    </div>
+                    <div class="os-option" data-os="datacenter">
+                        <div>Windows Server 2025 Datacenter Evaluation</div>
+                    </div>
+                    <div class="os-option" data-os="datacenter-desktop">
+                        <div>Windows Server 2025 Datacenter Evaluation (experiencia de escritorio)</div>
+                    </div>
+                </div>
+                <div class="description-text" id="description">
+                    (Recomendado) Esta opción omite la mayor parte del entorno gráfico de Windows. Lleva a cabo la administración con un símbolo del sistema y PowerShell, o de forma remota con Windows Admin Center u otras herramientas.
+                </div>
+            </div>
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <a href="configuracion.html" class="btn">Atrás</a>
+                    <a href="carga2.html" class="btn btn-next" id="btnSiguiente">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script src="../../JS/script_logo.js"></script>
+    <script src="../../JS/imagen.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const WINDOWN_PRESENTER_IMG = 'https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png';
+
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_imagen',
+                    title: "Paso 4: Elige la Versión del Sistema Operativo",
+                    content: `
+                        <p>¡Estás muy cerca del final!</p>
+                        <p>Aquí debes seleccionar la versión exacta de Windows Server que deseas instalar. Hay diferencias importantes entre ellas.</p>
+                        <p>Cierra este mensaje para ver las opciones.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed',
+                    nextStepAction: null
+                },
+                {
+                    id: 'paso_explicacion_versiones',
+                    title: "Standard vs. Datacenter y 'Experiencia de Escritorio'",
+                    content: `
+                        <p>Las versiones sin <strong>'(experiencia de escritorio)'</strong> son instalaciones mínimas (Server Core) que se manejan por línea de comandos. Son para usuarios avanzados.</p>
+                        <p>Para este tutorial, usaremos la versión con interfaz gráfica. Por favor, haz clic en <strong>"Windows Server 2025 Standard Evaluation (experiencia de escritorio)"</strong> para continuar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top-left',
+                    triggerEvent: 'osOptionClicked', // Evento personalizado que disparará imagen.js
+                    nextStepAction: 'standard-desktop' // El valor 'data-os' de la opción que esperamos
+                },
+                {
+                    id: 'paso_final_imagen',
+                    title: "¡Excelente Elección!",
+                    content: `
+                        <p>Has seleccionado la versión correcta para seguir esta guía.</p>
+                        <p>Ya está todo listo para la siguiente fase. Haz clic en el botón <strong>"Siguiente"</strong> para continuar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed', // El tutorial finaliza aquí
+                    nextStepAction: null
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows Server</title>
+    <link rel="stylesheet" href="../../css/wserver/ventana.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <link rel="stylesheet" href="../../css/wserver/particion.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows Server</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+            <div class="content">
+
+                <h1>Seleccionar ubicación para instalar Windows Server</h1>
+
+                <div class="opciones">
+
+                    <div class="opcion-grupo">
+                        <div class="flex-center"><img class="icon" src="../../icons/refresh.svg" alt=""><a
+                                href="#">Refresh</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco.svg" alt=""><a href="#">Load
+                                Driver</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco2.svg" alt=""><a class="gris"
+                                href="#">Bring Disk Online</a></div>
+                    </div>
+                    <div class="opcion-grupo ">
+                        <div class="flex-center"><img class="icon" src="../../icons/x.svg" alt="icon"><a class="gris"
+                                href="#">Delete Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco3.svg" alt="icon"><a
+                                id="formatear" class="gris" href="#">Format Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/mas.svg" alt="icon"><a
+                                id="crearParticion" href="#">Create Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/mas.svg" alt="icon"><a
+                                href="#">Extend Partition</a></div>
+                    </div>
+
+                </div>
+
+                <div id="apply-cancel-bar" class="none">
+                    <label for="tamaño">Tamaño en MB:</label>
+                    <input type="text" id="tamaño" value="25..">
+                    <button class="btn" id="apply-button">Apply</button>
+                    <button onclick="cancelar('apply-cancel-bar')" class="btn">Cancel</button>
+                </div>
+
+                <div class="table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tamaño total</th>
+                                <th>Espacio disp...</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="tr1" class="">
+                                <td>Disco 0 Espacio sin asignar</td>
+                                <td>50.0 GB</td>
+                                <td>50.0 GB</td>
+                                <td>Espacio sin asignar</td>
+                            </tr>
+
+                            <tr id="tr2" class="none">
+                                <td>Disco 0 partición 1</td>
+                                <td>100.0 MB</td>
+                                <td>85.9 MB</td>
+                                <td>Principal</td>
+                            </tr>
+                            <tr id="tr3" class="none">
+                                <td>Disco 0 partición 2</td>
+                                <td>25.0 GB</td>
+                                <td>24.9 GB</td>
+                                <td>Principal</td>
+                            </tr>
+                            <tr id="tr4" class="none">
+                                <td>Disco 0 Espacio sin asignar</td>
+                                <td>24.9 GB</td>
+                                <td>24.9 GB</td>
+                                <td>Espacio sin asignar</td>
+                            </tr>
+                            <tr id="tr5" class="none">
+                                <td>Disco 0 partición 3</td>
+                                <td>24.9 GB</td>
+                                <td>24.8 GB</td>
+                                <td>Principal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <button id="btnSiguiente" class="btn btn-disabled" disabled>Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="error-card" class="error-card">
+        <!-- <h3>Atento aquí..</h3>
+        <p><strong>Debes colocar la mitad (mb) del total de espacio:</strong> 25599</p>
+        <p>Intentalo de nuevo, tú puedes.</p> -->
+    </div>
+
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script src="../../JS/script_logo.js"></script>
+    <script src="../../JS/script_part.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const WINDOWN_PRESENTER_IMG = 'https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png';
+
+            const currentPageTutorialSteps = [
+                { 
+                    id: 'paso_intro_particion', 
+                    title: "Paso 6: Particionado de Disco", 
+                    content: `<p>Esta es la parte más técnica. Aquí prepararemos el disco duro para instalar Windows. Te guiaré en cada acción.</p><p>Cierra este mensaje para empezar.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'center', 
+                    triggerEvent: 'modalClosed'},
+                { 
+                    id: 'paso_seleccionar_espacio', 
+                    title: "1. Selecciona el Espacio", 
+                    content: `<p>Primero, haz clic en la fila que dice <strong>"Disco 0 Espacio sin asignar"</strong> para seleccionarla.</p>`, 
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'top-left', 
+                    triggerEvent: 'rowClicked', 
+                    nextStepAction: 'tr1'},
+                { 
+                    id: 'paso_clic_crear', 
+                    title: "2. Crea una Partición", 
+                    content: `<p>¡Bien! Ahora que has seleccionado el espacio, haz clic en la opción <strong>"Create Partition"</strong> para empezar.</p>`, 
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-right' },
+                    modalAlignment: 'top', 
+                    triggerEvent: 'buttonClicked', 
+                    nextStepAction: 'crearParticion'},
+                { 
+                    id: 'paso_ingresar_tamano1', 
+                    title: "3. Ingresa el Tamaño", 
+                    content: `<p>Para esta práctica, vamos a dividir el disco en dos. En el campo de texto que apareció, ingresa el valor <strong>25599</strong> y luego haz clic en <strong>"Apply"</strong>.</p>`, 
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'top-right', 
+                    triggerEvent: 'buttonClicked', 
+                    nextStepAction: 'apply-button'},
+                { 
+                    id: 'paso_seleccionar_espacio2', 
+                    title: "4. Selecciona el Nuevo Espacio", 
+                    content: `<p>¡Perfecto! Creaste la primera partición. Ahora repetiremos el proceso con el espacio restante.</p><p>Selecciona la <strong>nueva fila</strong> que dice <strong>"Disco 0 Espacio sin asignar"</strong>.</p>`, 
+                    modalAlignment: 'bottom-left', 
+                    triggerEvent: 'rowClicked', 
+                    nextStepAction: 'tr4'},
+                { 
+                    id: 'paso_clic_crear2', 
+                    title: "5. Crea la Segunda Partición", 
+                    content: `<p>Excelente. Vuelve a hacer clic en <strong>"Create Partition"</strong>.</p>`, 
+                    modalAlignment: 'top', 
+                    triggerEvent: 'buttonClicked', 
+                    nextStepAction: 'crearParticion'},
+                { 
+                    id: 'paso_ingresar_tamano2', 
+                    title: "6. Ingresa el Tamaño Final", 
+                    content: `<p>Ahora, para la segunda partición, ingresa el valor <strong>25497</strong> en el campo de texto y haz clic en <strong>"Apply"</strong>.</p>`, 
+                    modalAlignment: 'right', 
+                    triggerEvent: 'buttonClicked', 
+                    nextStepAction: 'apply-button'},
+                { 
+                    id: 'paso_siguiente_listo', 
+                    title: "¡Particiones Creadas!", 
+                    content: `<p>¡Lo lograste! Has configurado las particiones correctamente y el botón <strong>"Siguiente"</strong> ya está activado.</p><p>Haz clic en él para comenzar la instalación.</p>`, 
+                    modalAlignment: 'bottom', 
+                    triggerEvent: 'buttonClicked', 
+                    nextStepAction: 'btnSiguiente'},
+                { 
+                    id: 'paso_final_particion', 
+                    title: "Comenzando la Instalación", 
+                    content: `<p>Todo está listo. El sistema ahora copiará los archivos e instalará Windows Server. ¡Felicidades por llegar hasta aquí!</p>`, 
+                    modalAlignment: 'center', 
+                    triggerEvent: 'modalClosed'}
+            ];
+
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+        });
+    </script>
+</body>
+
+</html>

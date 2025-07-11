@@ -1,0 +1,204 @@
+/* Variables de Colores - Paleta Profesional */
+:root {
+    /* Paleta Principal */
+    --primary: #3a86ff;
+    --primary-light: #8cb8ff;
+    --secondary: #f0f4f8;
+    --accent: #4cc9f0;
+    --accent2: #48bfe3;
+    --dark: #1a1b25;
+    --dark-blue: #2c3e50;
+    --dark-alt: #343a40;
+    --light: #f8f9fa;
+    --light-gray: #e9ecef;
+    --success: #38b000;
+    --danger: #ef476f;
+    --warning: #ffd166;
+    --primary-hover: #1c6dd0;
+    --accent-hover: #0bb5e0;
+    --gradient-dark: linear-gradient(135deg, var(--dark), var(--dark-blue));
+    --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+/* Reset y estilos base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background: var(--gradient-dark);
+    color: var(--light);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+/* Contenedor principal */
+.simulador-container {
+    background-color: var(--dark);
+    border-radius: 10px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    width: 800px;
+    max-width: 90%;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Barra de título */
+.title-bar {
+    background: var(--gradient-primary);
+    padding: 0.8rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.title-bar h1 {
+    font-size: 1.2rem;
+    font-weight: 500;
+}
+
+/* Contenido del simulador */
+.simulador-content {
+    padding: 2rem;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Pasos */
+.step {
+    display: none;
+    flex: 1;
+    flex-direction: column;
+}
+
+.step.active {
+    display: flex;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Barra de botones */
+.button-bar {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--dark-alt);
+}
+
+/* Botones */
+.btn {
+    padding: 0.7rem 1.5rem;
+    border: none;
+    border-radius: 5px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary);
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover);
+}
+
+.btn-secondary {
+    background-color: var(--dark-alt);
+    color: var(--light);
+}
+
+.btn-secondary:hover {
+    background-color: var(--dark-blue);
+}
+
+/* Estilos específicos */
+.welcome-step {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.welcome-step img {
+    max-width: 200px;
+    margin-bottom: 2rem;
+}
+
+.install-step {
+    gap: 1.5rem;
+}
+
+.form-group {
+    margin-top: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.form-group select {
+    width: 100%;
+    padding: 0.5rem;
+    background: var(--dark-alt);
+    color: var(--light);
+    border: 1px solid var(--dark-blue);
+    border-radius: 5px;
+}
+
+.install-options {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.install-option {
+    flex: 1;
+    background: var(--dark-alt);
+    padding: 1.5rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.install-option:hover {
+    background: var(--dark-blue);
+}
+
+.install-option.selected {
+    border: 2px solid var(--primary);
+    background: var(--dark-blue);
+}
+
+.progress-container {
+    width: 100%;
+    background-color: var(--dark-alt);
+    border-radius: 5px;
+    margin: 1rem 0;
+}
+
+.progress-bar {
+    height: 20px;
+    background: var(--gradient-primary);
+    border-radius: 5px;
+    width: 0%;
+    transition: width 0.5s ease;
+}
+
+#install-status {
+    margin-top: 1rem;
+    font-style: italic;
+}

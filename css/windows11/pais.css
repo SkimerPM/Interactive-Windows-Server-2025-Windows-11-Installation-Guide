@@ -1,0 +1,268 @@
+body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #a8c8ec 0%, #7db3e8 100%);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .installer-window {
+            width: 670px;
+            height: 500px;
+            background: #f0f0f0;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            display: flex;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .left-panel {
+            width: 180px;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 60px 50px;
+            background: #f0f0f0;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .globe-image {
+            width: 180px;
+            height: 180px;
+        }
+
+        .content {
+            flex: 1;
+        }
+
+        .title {
+            font-size: 24px;
+            font-weight: 400;
+            color: #333;
+            margin-bottom: 40px;
+            line-height: 1.3;
+        }
+
+        .country-list {
+            height: 220px;
+            border: 0px solid #ccc;
+            border-radius: 4px;
+            background: white;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        .country-list::-webkit-scrollbar {
+            width: 17px;
+        }
+
+        .country-list::-webkit-scrollbar-track {
+            background: #f1f1f1;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .country-list::-webkit-scrollbar-thumb {
+            background: #c1c1c1;
+            border-radius: 4px;
+            border: 0px solid #f1f1f1;
+        }
+
+        .country-list::-webkit-scrollbar-thumb:hover {
+            background: #a8a8a8;
+        }
+
+        .country-option {
+            padding: 28px 15px;
+            background: transparent;
+            border: none;
+            text-align: left;
+            font-size: 16px;
+            color: #333;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            border-bottom: 0px solid #f0f0f0;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+        }
+
+        .country-option:hover {
+            background: #e5f3ff;
+        }
+
+        .country-option.selected {
+            background: #0078d4;
+            color: white;
+            font-weight: 500;
+        }
+
+        .country-option:last-child {
+            border-bottom: none;
+        }
+
+        .footer {
+            display: flex;
+            justify-content: flex-end;
+            padding-top: 20px;
+        }
+
+        .btn-yes {
+            background: #0078d4;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .btn-yes:hover {
+            background: #106ebe;
+        }
+
+        .btn-yes:active {
+            background: #005a9e;
+        }
+
+        .btn-yes:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+
+        .bottom-icons {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            display: flex;
+            gap: 15px;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 4px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: background 0.2s ease;
+        }
+
+        .icon:hover {
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .accessibility-icon::before {
+            content: '♿';
+            font-size: 14px;
+            color: #666;
+        }
+
+        .volume-icon::before {
+            content: '🔊';
+            font-size: 12px;
+        }
+
+        /* Loading Screen - Mantiene el layout de dos paneles */
+        .loading-screen {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #f0f0f0;
+            display: none;
+            z-index: 1000;
+        }
+
+        .loading-screen.active {
+            display: flex;
+        }
+
+        .loading-left-panel {
+            width: 180px;
+            background: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 40px 20px;
+        }
+
+        .loading-right-panel {
+            flex: 1;
+            background: #f0f0f0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .loading-spinner {
+            width: 32px;
+            height: 32px;
+            border: 3px solid transparent;
+            border-top: 3px solid #0078d4;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+
+        .country-list .country-option,
+.footer .btn-yes {
+    font-weight: 400 !important;
+    color: #333 !important;
+    background: transparent !important;
+    border: none !important;
+    font-size: 16px !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    width: 100% !important;
+    padding: 28px 15px !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+}
+
+.country-list .country-option.selected {
+    background: #0078d4 !important;
+    color: white !important;
+    font-weight: 500 !important;
+}
+
+.country-list .country-option:hover {
+    background: #e5f3ff !important;
+    color: #333 !important;
+}
+
+.footer .btn-yes {
+    background: #0078d4 !important;
+    color: white !important;
+    border: none !important;
+    padding: 12px 30px !important;
+    font-size: 16px !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+    margin: 0 !important;
+    min-width: 0 !important;
+    width: auto !important;
+}

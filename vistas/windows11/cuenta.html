@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/cuenta.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Nombre al Dispositivo</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <img src="../../img/w11/iconos_windows.png" alt="Iconos de aplicaciones de Microsoft" class="benefits-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content scrollable">
+                <h1 class="title">Vamos a agregar su cuenta de Microsoft</h1>
+
+                <div class="account-header">
+                    <svg class="microsoft-logo" viewBox="0 0 24 24"><path d="M11.5,11.5H1.5V1.5h10v10ZM22.5,11.5H12.5V1.5h10v10ZM11.5,22.5H1.5V12.5h10v10ZM22.5,22.5H12.5V12.5h10v10Z" fill="#737373"></path></svg>
+                    <h2>Microsoft</h2>
+                </div>
+
+                <h3>Iniciar sesión</h3>
+                <div class="input-wrapper">
+                    <input type="email" id="loginInput" placeholder="Correo electrónico, teléfono o Skype" autocomplete="off">
+                </div>
+
+                <p class="form-link">¿No tiene una cuenta? <a href="#">Cree una.</a></p>
+                <p class="form-link"><a href="cuenta_opciones.html" id="signInOptionsLink">Opciones de inicio de sesión</a></p>
+
+                <p class="info-text">
+                    Cuando inicie sesión, haremos que la información guardada en su cuenta esté disponible en todos los productos de Microsoft para que cosas importantes como la información del calendario, los favoritos, los contactos, las contraseñas, el historial de exploración y los archivos recomendados estén justo donde los necesite. <a href="#">Más información</a>
+                </p>
+                <p class="info-text">
+                    Si elige Siguiente, significa que acepta el <a href="#">Contrato de servicios de Microsoft</a> y la <a href="#">Declaración de privacidad</a>.
+                </p>
+            </div>
+            
+            <div class="footer">
+                <button class="btn-secondary" id="moreInfoButton">Más información</button>
+                <button class="btn-primary" id="nextButton" disabled>Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11cuenta.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla de INICIO DE SESIÓN
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_cuenta',
+                    title: "Agregar tu Cuenta de Microsoft",
+                    content: `
+                        <p>¡Hola! Esta es la pantalla donde normalmente iniciarías sesión con tu cuenta de Microsoft para sincronizar toda tu configuración.</p>
+                        <p>Sin embargo, existen otras formas de configurar tu equipo. Cierra este mensaje para verlas.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_clic_opciones',
+                    title: "Explorar Otras Opciones",
+                    content: `
+                        <p>En lugar de escribir un correo, para este tutorial vamos a explorar las otras alternativas.</p>
+                        <p>Por favor, haz clic en el enlace <strong>"Opciones de inicio de sesión"</strong> para continuar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'buttonClicked',      // Esperamos un clic...
+                    nextStepAction: 'signInOptionsLink' // ...en el enlace con este ID.
+                },
+                {
+                    id: 'paso_final',
+                    title: "¡Muy bien!",
+                    content: `
+                        <p>Ahora verás las diferentes formas de iniciar sesión o configurar una cuenta local.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENER PARA DISPARAR EL EVENTO PERSONALIZADO ---
+
+            // Escuchamos el clic en el enlace "Opciones de inicio de sesión"
+            const signInOptionsLink = document.getElementById('signInOptionsLink');
+            if (signInOptionsLink) {
+                signInOptionsLink.addEventListener('click', (event) => {
+                    // Prevenimos que el enlace navegue inmediatamente para poder mostrar el último modal
+                    event.preventDefault(); 
+                    
+                    // Avisamos al tutorialManager que la acción correcta se ha realizado
+                    document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                        detail: {
+                            actionId: 'buttonClicked',
+                            elementId: 'signInOptionsLink'
+                        }
+                    }));
+
+                    // Después de un breve retraso, navegamos a la página de opciones
+                    setTimeout(() => {
+                        window.location.href = signInOptionsLink.href;
+                    }, 2500); // Espera 2.5 segundos
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

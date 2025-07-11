@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows Server</title>
+    <link rel="stylesheet" href="../../css/wserver/ventana.css">
+    <link rel="stylesheet" href="../../css/windows11/listo_para_instalar.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows 11</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="main-title">Listo para instalar</h1>
+                <p class="instruction-text">No podrás usar el equipo durante la instalación. Guarda y cierra tus archivos antes de empezar.</p>
+                <p class="instruction-text">Conecta su equipo para asegurarse de que la batería no se agote durante la instalación.</p>
+                <p class="summary-text">En resumen, esto es lo que has decidido hacer:</p>
+
+                <div class="checkbox-item">
+                    <span class="checkbox-icon">✓</span>
+                    <span>Instalar Windows 11 Home</span>
+                </div>
+                <div class="checkbox-item">
+                    <span class="checkbox-icon">✓</span>
+                    <span>No mantener nada</span>
+                </div>
+
+                <div class="note-section">
+                    <p class="note-text">Nota: Algunas aplicaciones y características pueden tener requisitos adicionales por encima de los requisitos mínimos del sistema de Windows 11. Algunas características de versiones anteriores de Windows no están disponibles en Windows 11.</p>
+                    <p class="link-text">Comprobar las especificaciones del dispositivo</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <a href="particion.html" class="btn">Atrás</a>
+                    <a href="Vinstalacion.html" class="btn btn-next" id="btnInstalar">Instalar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/script_logo.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla final de confirmación
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_final',
+                    title: "¡Listos para Instalar!",
+                    content: `
+                        <p>¡Hemos llegado al último paso de la configuración! Esta pantalla es un resumen de todo lo que hemos elegido hasta ahora.</p>
+                        <p>Es importante leer las advertencias antes de continuar. Cierra este mensaje para ver el resumen.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_revisar_opciones',
+                    title: "Revisa tu Configuración",
+                    content: `
+                        <p>La pantalla confirma que vas a instalar <strong>Windows 11 Home</strong> y que no se conservará ningún archivo anterior (una instalación limpia).</p>
+                        <p>Esta es tu última oportunidad para volver atrás si quieres cambiar algo.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_clic_instalar',
+                    title: "¡Comienza la Instalación!",
+                    content: `
+                        <p>Cuando estés listo para empezar el proceso de instalación final, haz clic en el botón <strong>"Instalar"</strong>.</p>
+                        <p>Una vez que hagas clic, ¡ya no hay vuelta atrás!</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'buttonClicked',     // Esperamos el clic en el botón...
+                    nextStepAction: 'btnInstalar'     // ...con este ID.
+                },
+                {
+                    id: 'paso_despedida',
+                    title: "¡Excelente Trabajo!",
+                    content: `
+                        <p>Has completado toda la fase de configuración. ¡Felicidades!</p>
+                        <p>Ahora comenzará la instalación de Windows. ¡Gracias por seguir esta guía conmigo!</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                }
+            ];
+
+            // Inicia el tutorial con los pasos definidos
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENER PARA EL BOTÓN "INSTALAR" ---
+
+            const btnInstalar = document.getElementById('btnInstalar');
+            if (btnInstalar) {
+                btnInstalar.addEventListener('click', (event) => {
+                    event.preventDefault(); // Detenemos la navegación para mostrar el último modal
+                    
+                    // Avisamos al tutorialManager que se ha realizado la acción correcta
+                    document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                        detail: {
+                            actionId: 'buttonClicked',
+                            elementId: 'btnInstalar'
+                        }
+                    }));
+
+                    // Después de un breve retraso, navegamos a la pantalla de instalación
+                    setTimeout(() => {
+                        window.location.href = btnInstalar.href;
+                    }, 2500); // Espera 2.5 segundos
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

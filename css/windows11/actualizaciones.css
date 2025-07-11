@@ -1,0 +1,117 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #a8c8ec 0%, #7db3e8 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.installer-window {
+    width: 670px;
+    height: 500px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.left-panel {
+    width: 180px;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.benefits-image {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.right-panel {
+    flex: 1;
+    padding: 30px 50px;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Spinner de carga */
+.spinner {
+    margin-top: 50px;
+    width: 48px;
+    height: 48px;
+    border: 5px solid #d1d5db;
+    border-top-color: #0078d4;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* Texto de carga */
+.loading-text {
+    font-size: 18px;
+    color: #333;
+    font-weight: 500;
+    margin-top: 25px;
+    max-width: 250px;
+}
+
+/* Footer vacío para estructura */
+.footer {
+    min-height: 30px;
+}
+
+/* Iconos inferiores */
+.bottom-icons {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+.icon {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+.icon:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+.accessibility-icon::before {
+    content: '♿';
+    font-size: 14px;
+    color: #666;
+}
+.volume-icon::before {
+    content: '🔊';
+    font-size: 12px;
+}

@@ -1,0 +1,531 @@
+body {
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 12px;
+  background-color: #f0f0f0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column-reverse;
+  min-height: 100vh;
+}
+
+* {
+  user-select: none;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.window {
+  position: relative;
+  text-align: center;
+  padding: 30px;
+  /* max-width: 500px; */
+  width: 100%;
+  /* height: 400px; */
+  height: 100vh;
+  overflow: hidden;
+
+  overflow-y: scroll;
+}
+
+.window-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  object-fit: cover;
+  object-position: center;
+  z-index: -1;
+  height: 100%;
+}
+
+.window-content {
+  position: relative;
+  z-index: 1;
+  height: 100%;
+
+  color: white;
+  transition: all 0.5s ease;
+}
+
+.iconos-pantalla {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  gap: 1rem;
+}
+
+.iconos-pantalla .icono {
+  width: 2rem;
+  height: 2rem;
+}
+.icono-cont {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+}
+
+.footer {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: aliceblue; /*falta ver el colororiginal*/
+  display: flex;
+  justify-content: flex-end;
+}
+
+.uno {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem;
+  gap: 0.5rem;
+  margin-right: 26%;
+}
+
+.input {
+  border: 1px solid rgb(70, 70, 70);
+  border-radius: 23px;
+  padding: 0.2rem;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 7px 0;
+  padding-left: 12px;
+}
+.input input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.icon-footer {
+  width: 14px;
+  cursor: pointer;
+}
+.icon-footer.primero {
+  width: 30px;
+  height: auto;
+}
+.icon-footer.server {
+  width: 24px;
+  height: auto;
+}
+
+.icon-footer.secu {
+  width: 20px;
+}
+
+.dos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.5rem 0.8rem;
+  gap: 0.5rem;
+}
+.dos img {
+  width: 20px;
+}
+
+.fecha-hora {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+  color: #545353;
+  margin-left: 10px;
+}
+
+/* AJUSTES INTERFÁS */
+
+#ajustesContainer {
+  width: 100%;
+  position: absolute;
+  max-width: 800px;
+  margin: 0 auto;
+  border-radius: 6px;
+  background-color: #f0f0f0;
+  box-shadow: 2px 2px 10px 2px #22222265;
+  padding: 0.5rem;
+  margin-top: -10%;
+  z-index: 20;
+}
+
+.header-ajustes {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 770px;
+  margin: 0 auto;
+}
+
+.h-izquierda {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.h-derecha {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: space-between;
+}
+
+.h-icon {
+  width: 10px;
+  cursor: pointer;
+}
+
+.main-ajustes {
+  margin-top: 2rem;
+  display: flex;
+}
+
+.main-a-izquierda {
+  width: 34%;
+
+  /* border-right: 1px solid red; */
+}
+
+.main-a-derecha {
+  width: 100%;
+}
+.main-a-derecha {
+  padding-left: 2rem;
+  width: 100%;
+  overflow-y: scroll;
+}
+
+.main-a-derecha h3 {
+  font-weight: 400;
+  font-size: 1.53rem;
+}
+
+.main-a-derecha .img-usuario img {
+  width: 110px;
+  border-radius: 4px;
+  border: 5.3px solid black;
+}
+.main-a-derecha .img-usuario {
+  display: flex;
+  gap: 1rem;
+}
+.uno-dos {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  cursor: pointer;
+}
+
+.uno-dos img {
+  width: 15px;
+  height: 15px;
+}
+.uno-dos div {
+  display: flex;
+  flex-direction: column;
+}
+
+.cuenta-ajustes {
+  display: flex;
+  align-items: center;
+  justify-content: start;
+  gap: 1rem;
+}
+.cuenta-ajustes h3 {
+  font-weight: 700;
+}
+
+#uno-dos-uno {
+  margin-top: 1rem;
+}
+
+.opcionesDerecha {
+  margin-top: 2.4rem;
+  margin-left: 0.4rem;
+  display: grid;
+  gap: "4px";
+}
+.uno-dos.opcion {
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  padding: 1.3rem 1rem;
+}
+.uno-dos.opcion:hover {
+  background-color: #d8d8d8ac;
+}
+
+.cuenta-ajustes figure {
+  border-radius: 100%;
+  padding: 1rem;
+  background-color: rgb(247, 247, 247);
+}
+
+.icon-user {
+  width: 47px;
+}
+
+.inpt-ajustes {
+  margin-top: 1.3rem;
+  display: flex;
+  gap: 10px;
+  padding: 0.4rem 0.8rem;
+  width: 100%;
+  background-color: rgb(247, 247, 247);
+  justify-content: space-between;
+  border-radius: 4px;
+}
+.component-main-izquierda.primero {
+  margin-top: 1rem;
+}
+.inpt-ajustes img {
+  width: 12px;
+}
+
+.inpt-ajustes input {
+  outline: none;
+  border: none;
+  background-color: transparent;
+}
+
+.component-main-izquierda {
+  display: flex;
+  gap: 10px;
+  border-radius: 4px;
+  width: 100%;
+
+  background-color: #e7e7e7ac;
+  height: 30px;
+  padding: 0.4rem 0.8rem;
+  margin-top: 3px;
+}
+
+.component-main-izquierda:hover {
+  background-color: #d8d8d8ac;
+  cursor: pointer;
+}
+
+.opcionesDerecha {
+  max-height: 300px;
+}
+
+#cambiar-nombre {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 650px;
+  padding: 20px;
+
+  background-color: rgb(249, 244, 244);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+#cambiar-nombre div h4 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+#cambiar-nombre div .input-nombre {
+  margin: 1rem 0;
+  margin-bottom: 1.5rem;
+}
+
+#cambiar-nombre p{
+    margin-bottom: .3rem;
+}
+
+.input-nombre {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0.3rem;
+  border-bottom: 3px solid #2f66a4;
+  border-radius: 3px;
+  width: 180px;
+  box-shadow: 0 0 0 0.4px rgb(115, 115, 115);
+}
+
+/* CAMBIAR NOMBRE  botones */
+
+.btn-cambiar-nombre {
+  border-radius: 3px;
+  background-color: #2f66a4;
+  color: #f5f5f5;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  cursor: pointer;
+  margin-right: 13px;
+}
+
+.btn-cambiar-nombre-dos {
+  border-radius: 3px;
+  background-color: #f5f5f5;
+  color: black;
+  padding: 0.4rem 0.6rem;
+  border: none;
+  cursor: pointer;
+}
+.cn-buttons {
+  text-align: end;
+}
+
+.bts-cambiar-nombre {
+  width: 100%;
+  padding: 1.4rem;
+
+  background-color: rgb(232, 232, 232);
+}
+
+.input-nombre input {
+  width: 100%;
+  border: none;
+  background-color: transparent;
+  outline: none;
+}
+.input-nombre input:focus {
+  border: none;
+}
+
+.input-nombre img {
+  width: 10px;
+  height: 10px;
+  cursor: pointer;
+}
+
+/* Css de servidor */
+#serverManagerContainer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.3);
+    z-index: 999;
+    display: none;
+}
+
+#serverManagerFrame {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+
+/* ===== ESTILOS PARA EL MODAL DE FELICITACIONES ===== */
+
+/* El fondo oscuro que cubre toda la pantalla */
+.felicitaciones-overlay {
+  position: fixed; /* Se queda fijo en la pantalla */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.75); /* Negro semi-transparente */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000; /* Se asegura de que esté por encima de todo */
+  backdrop-filter: blur(5px); /* Opcional: un bonito efecto de desenfoque */
+}
+
+/* La ventana o modal de felicitaciones */
+.felicitaciones-modal {
+  position: relative;
+  background-color: #2c2c2c;
+  color: #ffffff;
+  padding: 40px 50px;
+  border-radius: 12px;
+  text-align: center;
+  max-width: 500px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  border: 1px solid #555;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.5s ease-out;
+}
+
+/* Animación para que el modal aparezca suavemente */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.felicitaciones-modal .trophy-icon {
+    width: 80px;
+    margin-bottom: 20px;
+}
+
+.felicitaciones-modal h1 {
+  font-size: 2.5em;
+  margin: 0 0 15px 0;
+  color: #00aaff; /* Un toque de color */
+}
+
+.felicitaciones-modal p {
+  font-size: 1.1em;
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+/* El botón para volver al inicio */
+.felicitaciones-modal .btn-volver {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #0078d4;
+  color: #ffffff;
+  text-decoration: none;
+  border-radius: 5px;
+  font-size: 1.1em;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.felicitaciones-modal .btn-volver:hover {
+  background-color: #005a9e;
+  transform: translateY(-2px); /* Un pequeño efecto al pasar el ratón */
+}
+
+/* --- ESTILOS PARA EL PRESENTADOR EN EL MODAL FINAL --- */
+
+.modal-presenter-final {
+    position: absolute;   /* Permite posicionarlo donde queramos dentro del modal */
+    width: 140px;         /* Un tamaño un poco más grande para la despedida */
+    height: auto;
+
+    /* Posicionamiento en la esquina inferior derecha, "asomándose" */
+    top: -40px;
+    left: -60px;
+    
+    /* Animación de flotación */
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Reutilizamos la animación de flotación */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px); /* Se mueve 10px hacia arriba */
+    }
+    100% {
+        transform: translateY(0px); /* Vuelve a la posición original */
+    }
+}

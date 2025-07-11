@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows Server</title>
+    <link rel="stylesheet" href="../../css/wserver/ventana.css">
+    <link rel="stylesheet" href="../../css/wserver/configuracion.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows Server</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="main-title">Seleccionar opción de configuración</h1>
+                <p class="instruction-text">Instale la versión más reciente de Windows Server o repare el equipo. Si
+                    está instalando Windows Server, tenga en cuenta que los archivos, las aplicaciones y la
+                    configuración se eliminarán.</p>
+
+                <div class="section-title">Me gustaría</div>
+
+                <div class="radio-group">
+                    <div class="radio-item">
+                        <input type="radio" name="option" class="radio-input" id="install" value="install" checked>
+                        <span class="option-text option-bordered" id="install-text">Instalar Windows Server</span>
+                    </div>
+                    <div class="radio-item">
+                        <input type="radio" name="option" class="radio-input" id="repair" value="repair">
+                        <span class="option-text" id="repair-text">Reparar mi PC</span>
+                    </div>
+                </div>
+
+                <div class="checkbox-item" id="agreement-checkbox">
+                    <input type="checkbox" class="checkbox-input" id="agreement-check">
+                    <span>I agree everything will be deleted including files, apps, and settings</span>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <a href="teclado.html" class="btn">Atrás</a>
+                    <a href="carga.html" class="btn btn-next" id="next-button">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script src="../../JS/script_logo.js"></script>
+    <script src="../../JS/configuracion.js"></script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Este script ahora solo define los pasos y arranca el tutorial.
+            // La lógica de la página y los disparadores de eventos están en configuracion.js
+
+            const WINDOWN_PRESENTER_IMG = 'https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png';
+
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_config',
+                    title: "Paso 3: Tipo de Instalación",
+                    content: `
+                        <p>¡Ya casi terminamos la configuración inicial!</p>
+                        <p>En esta pantalla, decidirás si quieres realizar una instalación nueva o reparar una existente. Para nuestro objetivo, realizaremos una instalación completa.</p>
+                        <p>Cierra este mensaje para comenzar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed',
+                    nextStepAction: null
+                },
+                {
+                    id: 'paso_seleccionar_instalar',
+                    title: "Selecciona 'Instalar Windows Server'",
+                    content: `
+                        <p>La opción <strong>"Instalar Windows Server"</strong> está seleccionada por defecto. Esta opción borrará todo y comenzará desde cero.</p>
+                        <p>Como ya está seleccionada, el siguiente paso es aceptar las condiciones. Para ello, pulsa en la casilla de verificación.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'checkboxChanged', // Avanza cuando el checkbox cambia
+                    nextStepAction: 'agreement-check' // ID del checkbox
+                },
+                {
+                    id: 'paso_confirmar_borrado',
+                    title: "¡Botón Siguiente Activado!",
+                    content: `
+                        <p>¡Excelente! Al marcar la casilla, has confirmado que entiendes que los datos se borrarán y has activado el botón <strong>"Siguiente"</strong>.</p>
+                        <p>Ahora, haz clic en el botón "Siguiente" para continuar con la instalación.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'buttonClicked', // Avanza al hacer clic en el botón siguiente
+                    nextStepAction: 'next-button' // ID del botón
+                },
+                {
+                    id: 'paso_final_config',
+                    title: "Iniciando Instalación...",
+                    content: `<p>¡Perfecto! Has completado toda la configuración previa. El sistema ahora comenzará el proceso de instalación.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed', 
+                    nextStepAction: null
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/nombre.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Nombre al Dispositivo</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <img src="../../img/w11/cuenta.png" alt="imagen de cuenta" class="benefits-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content">
+                <h1 class="title">¿Quién usará este dispositivo?</h1>
+                <p class="subtitle">Usarás este nombre para iniciar sesión en tu dispositivo.</p>
+                
+                <div class="input-group">
+                    <label for="userNameInput">Escribe tu nombre</label>
+                    <input type="text" id="userNameInput" placeholder="Nombre" maxlength="32" autocomplete="off">
+                </div>
+
+                <p class="form-link">
+                    <a href="#">Mejor aún, usa una cuenta en línea.</a>
+                </p>
+            </div>
+            
+            <div class="footer">
+                <button class="btn-primary" id="nextButton" disabled>Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11nombre.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla de CREAR USUARIO LOCAL
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_usuario',
+                    title: "Crear la Cuenta de Usuario",
+                    content: `
+                        <p>¡Ya casi terminamos! Ahora vamos a crear la cuenta principal para este equipo.</p>
+                        <p>El nombre que escribas aquí será el que verás al iniciar sesión.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_escribir_nombre',
+                    title: "Paso 1: Escribe tu Nombre",
+                    content: `
+                        <p>En el campo de texto, escribe el nombre de la persona que usará principalmente este PC (por ejemplo, tu primer nombre).</p>
+                        <p>El tutorial avanzará automáticamente cuando escribas un nombre y el botón "Siguiente" se active.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'inputValidated', // Se activará cuando el botón "Siguiente" se habilite
+                    nextStepAction: 'userNameInput'
+                },
+                {
+                    id: 'paso_clic_siguiente',
+                    title: "¡Nombre Válido!",
+                    content: `
+                        <p>¡Perfecto! Ahora que el botón "Siguiente" está disponible, haz clic en él para crear el usuario.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'nextButton' 
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+            // 1. Observador que vigila el botón "Siguiente" para saber cuándo se activa
+            if (nextButton) {
+                const observer = new MutationObserver((mutationsList) => {
+                    for (const mutation of mutationsList) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
+                            // Si el atributo 'disabled' ha sido quitado...
+                            if (!nextButton.disabled) {
+                                console.log("El botón 'Siguiente' ha sido habilitado por el script de la página.");
+                                
+                                // Le avisamos al tutorial que la validación fue exitosa
+                                document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                                    detail: { actionId: 'inputValidated', elementId: 'userNameInput' }
+                                }));
+                                
+                                // Dejamos de observar para no disparar el evento de nuevo
+                                observer.disconnect(); 
+                            }
+                        }
+                    }
+                });
+
+                // Configuramos al observador para que vigile los cambios de atributos en el botón
+                observer.observe(nextButton, { attributes: true });
+            }
+        });
+    </script>
+</body>
+
+</html>

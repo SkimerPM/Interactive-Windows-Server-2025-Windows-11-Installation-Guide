@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows 11</title>
+    <link rel="stylesheet" href="../../css/windows11/imagen.css">
+    <link rel="stylesheet" href="../../css/windows11/ventana.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows 11</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="main-title">Seleccionar imagen</h1>
+                <p class="subtitle">Selecciona la imagen que quieras instalar.</p>
+
+                <div class="os-listbox">
+                    <div class="section-label">Sistema operativo:
+                    </div>
+                    <div class="os-option selected" data-os="home">
+                        <div>Windows 11 Home</div>
+                    </div>
+                    <div class="os-option" data-os="home-n">
+                        <div>Windows 11 Home N</div>
+                    </div>
+                    <div class="os-option" data-os="home-sl">
+                        <div>Windows 11 Home Single Language</div>
+                    </div>
+                    <div class="os-option" data-os="education">
+                        <div>Windows 11 Education</div>
+                    </div>
+                    <div class="os-option" data-os="education-n">
+                        <div>Windows 11 Education N</div>
+                    </div>
+                    <div class="os-option" data-os="pro">
+                        <div>Windows 11 Pro</div>
+                    </div>
+                    <div class="os-option" data-os="pro-n">
+                        <div>Windows 11 Pro N</div>
+                    </div>
+                    <div class="os-option" data-os="pro-education">
+                        <div>Windows 11 Pro Education</div>
+                    </div>
+                    <div class="os-option" data-os="pro-education-n">
+                        <div>Windows 11 Pro Education N</div>
+                    </div>
+                    <div class="os-option" data-os="pro-workstations">
+                        <div>Windows 11 Pro for Workstations</div>
+                    </div>
+                    <div class="os-option" data-os="pro-workstations-n">
+                        <div>Windows 11 Pro for Workstations N</div>
+                    </div>
+                </div>
+                
+                <div class="description-text" id="description">
+                    Windows 11 Home
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <a href="clave_prod.html" class="btn">Atrás</a>
+                    <a href="carga5.html" class="btn btn-next" id="btnSiguiente">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../js/script_logo.js"></script>
+    <script src="../../js/imagen_w11.js"></script>
+    <script src="../../js/modal.js"></script>
+    <script src="../../js/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos específicos para la página de SELECCIÓN DE IMAGEN
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_imagen',
+                    title: " Paso 5: Selección del Sistema Operativo",
+                    content: `
+                        <p>¡Buen trabajo! Ahora debemos elegir qué edición de Windows 11 queremos instalar.</p>
+                        <p>Cada edición tiene características diferentes. Por ejemplo, 'Pro' tiene más herramientas de red y seguridad que 'Home'.</p>
+                        <p>Cierra este mensaje para continuar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_confirmar_seleccion',
+                    title: "Confirmar la Selección por Defecto",
+                    content: `
+                        <p>Como puedes ver, la opción <strong>"Windows 11 Home"</strong> ya viene seleccionada. Para este tutorial, esa es la opción que usaremos.</p>
+                        <p>Si quisieras, podrías hacer clic en otra edición para ver su descripción abajo, pero no es necesario para continuar.</p>
+                        <p>Simplemente cierra este mensaje.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-left',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_clic_siguiente',
+                    title: "Continuar con la Instalación",
+                    content: `
+                        <p>¡Perfecto! Ahora que hemos confirmado nuestra selección, por favor haz clic en el botón <strong>"Siguiente"</strong> para avanzar al próximo paso: los términos de licencia.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'modalClosed'  
+                }
+            ];
+
+            // Inicia el tutorial con los pasos definidos para esta página
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+        });
+    </script>
+</body>
+
+</html>

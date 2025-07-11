@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows 11</title>
+    <link rel="stylesheet" href="../../css/windows11/ventana.css">
+    <link rel="stylesheet" href="../../css/windows11/idioma.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows 11</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="main-title">Seleccionar configuración de idioma</h1>
+
+                <div class="form-group">
+                    <div class="form-label">Idioma para instalar</div>
+                    <div class="form-select">
+                        <select id="selectIdiomaInstalar"> 
+                            <option value="en_us">Inglés (Estados Unidos)</option>
+                            <option value="fr_fr">Francés (Francia)</option>
+                            <option value="es_es">Español (España, internacional)</option>
+                            </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="form-label">Formato de hora y moneda</div>
+                    <div class="form-select">
+                        <select id="selectFormatoHoraMoneda"> 
+                            <option value="en_us">Inglés (Estados Unidos)</option>
+                            <option value="fr_fr">Francés (Francia)</option>
+                            <option value="es_es">Español (España, internacional)</option>
+                            </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <a href="#" class="btn btn-disabled">Atrás</a>
+                    <a href="teclado.html" class="btn btn-next">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../JS/script_logo.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador (ajusta la ruta si es necesario)
+            const WINDOWN_PRESENTER_IMG = 'https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png';
+
+            // Define los pasos específicos para ESTA PÁGINA
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_bienvenida',
+                    title: "¡Bienvenido! Has dado el primer paso para aprender a instalar Windows 11!",
+                    content: `
+                        <p>Hola, soy <strong>Windown</strong>, seré tu profesor y te guiaré en cada paso, encantado de conocerte <3 !</p>
+                        <p>En esta lección aprenderás a configurar el idioma del sistema.</p>
+                        <p>¡Comencemos! Por favor, cierra este mensaje para iniciar el primer paso.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed', // Avance al cerrar el modal
+                    nextStepAction: null
+                },
+                {
+                    id: 'paso_seleccionar_idioma',
+                    title: "Paso 1: Selecciona el Idioma de Instalación",
+                    content: `
+                        <p>En la sección "Idioma para instalar", haz clic en el menú desplegable y elige el idioma que prefieras (Español para esta guía).</p>
+                        <p>El tutorial avanzará automáticamente cuando hagas tu selección.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top-right',
+                    triggerEvent: 'selectChanged', // AVANZA AL CAMBIAR EL SELECT
+                    nextStepAction: 'selectIdiomaInstalar' // ID del select a observar
+                },
+                {
+                    id: 'paso_formato_hora_moneda',
+                    title: "Paso 2: Configura el Formato de Hora y Moneda",
+                    content: `
+                        <p>Ahora, en la sección "Formato de hora y moneda", elige el formato adecuado para tu región. Esto es importante para cómo se muestran fechas y divisas.</p>
+                        <p>El tutorial seguirá cuando hayas hecho tu elección.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-left',
+                    triggerEvent: 'selectChanged', // AVANZA AL CAMBIAR EL SELECT
+                    nextStepAction: 'selectFormatoHoraMoneda' // ID del segundo select a observar
+                },
+                {
+                    id: 'paso_final_pagina',
+                    title: "¡Tutorial de Configuración de Idioma Completado!",
+                    content: `
+                        <p>¡Felicidades! Has completado los pasos de configuración de idioma y formato de hora y moneda de Windows 11.</p>
+                        <p>Ahora estás listo para pasar a la siguiente etapa de instalación. Puedes usar el botón "Siguiente" de Windows para ir a la siguiente lección.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed', // Finaliza al cerrar este último modal
+                    nextStepAction: null
+                }
+            ];
+
+            // Inicia el tutorial específico para esta página.
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+            // Estos listeners solo DISPARAN eventos, el tutorialManager.js es quien decide si ese evento
+            // corresponde al paso actual y avanza el tutorial.
+
+            const selectIdiomaInstalar = document.getElementById('selectIdiomaInstalar');
+            if (selectIdiomaInstalar) {
+                selectIdiomaInstalar.addEventListener('change', () => {
+                    document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                        detail: {
+                            actionId: 'selectChanged', // Indica que un select ha cambiado
+                            elementId: 'selectIdiomaInstalar' // ID del select que lo disparó
+                        }
+                    }));
+                });
+            }
+
+            const selectFormatoHoraMoneda = document.getElementById('selectFormatoHoraMoneda');
+            if (selectFormatoHoraMoneda) {
+                selectFormatoHoraMoneda.addEventListener('change', () => {
+                    document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                        detail: {
+                            actionId: 'selectChanged',
+                            elementId: 'selectFormatoHoraMoneda'
+                        }
+                    }));
+                });
+            }
+
+            // Si tuvieras un botón "Siguiente" de la interfaz de Windows Server que quieras que avance el tutorial
+            // (que NO sea el de navegación a otra página):
+            // const winNextBtn = document.getElementById('idDelBotonSiguienteDeWindows);
+            // if (winNextBtn) {
+            //     winNextBtn.addEventListener('click', () => {
+            //         document.dispatchEvent(new CustomEvent('customActionTriggered', {
+            //             detail: {
+            //                 actionId: 'buttonClicked',
+            //                 elementId: 'idDelBotonSiguienteDeWindows'
+            //             }
+            //         }));
+            //     });
+            // }
+
+        });
+    </script>
+</body>
+
+</html>

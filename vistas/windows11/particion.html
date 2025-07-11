@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows Server</title>
+    <link rel="stylesheet" href="../../css/windows11/ventana.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+        <link rel="stylesheet" href="../../css/windows11/particion.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows 11</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+
+            <div class="content">
+
+                <h1>Seleccionar ubicación para instalar Windows 11</h1>
+
+                <div class="opciones">
+
+                    <div class="opcion-grupo">
+                        <div class="flex-center"><img class="icon" src="../../icons/refresh.svg" alt=""><a
+                                href="#">Refresh</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco.svg" alt=""><a href="#">Load
+                                Driver</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco2.svg" alt=""><a class="gris"
+                                href="#">Bring Disk Online</a></div>
+                    </div>
+                    <div class="opcion-grupo ">
+                        <div class="flex-center"><img class="icon" src="../../icons/x.svg" alt="icon"><a class="gris"
+                                href="#">Delete Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/disco3.svg" alt="icon"><a
+                                id="formatear" class="gris" href="#">Format Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/mas.svg" alt="icon"><a
+                                id="crearParticion" href="#">Create Partition</a></div>
+                        <div class="flex-center"><img class="icon" src="../../icons/mas.svg" alt="icon"><a
+                                href="#">Extend Partition</a></div>
+                    </div>
+
+                </div>
+
+                <div id="apply-cancel-bar" class="none">
+                    <label for="tamaño">Tamaño en MB:</label>
+                    <input type="text" id="tamaño" value="">
+                    <button class="btn" id="apply-button">Apply</button>
+                    <button onclick="cancelar('apply-cancel-bar')" class="btn">Cancel</button>
+                </div>
+
+                <div class="table-content">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Tamaño total</th>
+                                <th>Espacio disp...</th>
+                                <th>Tipo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr id="tr1">
+                                <td>Disco 0 Espacio sin asignar</td>
+                                <td>80.0 GB</td>
+                                <td>80.0 GB</td>
+                                <td>Espacio sin asignar</td>
+                            </tr>
+
+                            <tr id="tr2" class="none">
+                                <td>Disco 0 Partición 1</td>
+                                <td>100.0 MB</td>
+                                <td>100.0 MB</td>
+                                <td>Sistema</td>
+                            </tr>
+                            <tr id="tr3" class="none">
+                                <td>Disco 0 Partición 2</td>
+                                <td>16.0 MB</td>
+                                <td>16.0 MB</td>
+                                <td>MSR (reservado)</td>
+                            </tr>
+                            <tr id="tr4" class="none">
+                                <td>Disco 0 Partición 3</td>
+                                <td>52.0 GB</td>
+                                <td>52.0 GB</td>
+                                <td>Principal</td>
+                            </tr>
+                            <tr id="tr5" class="none">
+                                <td>Disco 0 Espacio sin asignar</td>
+                                <td>27.9 GB</td>
+                                <td>27.9 GB</td>
+                                <td>Espacio sin asignar</td>
+                            </tr>
+                            <tr id="tr6" class="none">
+                                <td>Disco 0 Partición 4</td>
+                                <td>27.9 GB</td>
+                                <td>27.9 GB</td>
+                                <td>Principal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <button id="btnSiguiente" class="btn btn-disabled" disabled>Siguiente</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="error-card" class="error-card">
+        <!-- <h3>Atento aquí..</h3>
+        <p><strong>Debes colocar la mitad (mb) del total de espacio:</strong> 25599</p>
+        <p>Intentalo de nuevo, tú puedes.</p> -->
+    </div>
+
+    <script src="../../JS/script_logo.js"></script>
+    <script src="../../JS/script_part_w11.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL del presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Pasos para la compleja pantalla de PARTICIONAMIENTO
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_particion',
+                    title: "Paso 7: Partición del Disco",
+                    content: `<p>¡Esta es la parte más técnica! Aquí vamos a dividir el disco duro en secciones (particiones) para instalar Windows.</p><p>Te guiaré en cada clic. ¡Empecemos!</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_seleccionar_espacio',
+                    title: "1. Seleccionar el Espacio",
+                    content: `<p>Primero, haz clic en la fila que dice <strong>"Disco 0 Espacio sin asignar"</strong> para decirle al sistema que queremos trabajar con ese espacio libre.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom',
+                    triggerEvent: 'rowClicked',
+                    nextStepAction: 'tr1'
+                },
+                {
+                    id: 'paso_crear_particion1',
+                    title: "2. Crear la Primera Partición",
+                    content: `<p>¡Bien hecho! Ahora que el espacio está seleccionado, haz clic en la opción <strong>"Create Partition"</strong> que se acaba de activar.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top-left',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'crearParticion'
+                },
+                {
+                    id: 'paso_ingresar_tamaño1',
+                    title: "3. Asignar Tamaño",
+                    content: `<p>Ahora debemos definir el tamaño. Para la partición principal de Windows, escribe el valor exacto <strong>53248</strong> en el campo y luego haz clic en el botón <strong>Apply</strong>.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+                    modalAlignment: 'right',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'apply-button'
+                },
+                {
+                    id: 'paso_explicar_resultado',
+                    title: "¡Particiones del Sistema Creadas!",
+                    content: `<p>¡Excelente! Al crear la primera partición, Windows automáticamente creó otras dos pequeñas particiones que necesita para funcionar. Ahora usaremos el espacio restante.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-right' },
+                    modalAlignment: 'left',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_seleccionar_espacio2',
+                    title: "4. Seleccionar el Espacio Restante",
+                    content: `<p>Ahora, selecciona la <strong>segunda fila</strong> que dice "Disco 0 Espacio sin asignar" para usar el resto del disco.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom',
+                    triggerEvent: 'rowClicked',
+                    nextStepAction: 'tr5'
+                },
+                {
+                    id: 'paso_crear_particion2',
+                    title: "5. Crear la Última Partición",
+                    content: `<p>Perfecto. Haz clic en <strong>"Create Partition"</strong> una vez más.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top-left',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'crearParticion'
+                },
+                {
+                    id: 'paso_ingresar_tamaño2',
+                    title: "6. Asignar Todo el Espacio",
+                    content: `<p>Esta vez usaremos todo el espacio restante. Escribe <strong>28554</strong> en el campo y haz clic en <strong>Apply</strong> para finalizar.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+                    modalAlignment: 'right',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'apply-button'
+                },
+                {
+                    id: 'paso_final_siguiente',
+                    title: "¡Particionamiento Completo!",
+                    content: `<p>¡Felicidades! Has particionado el disco con éxito. El botón <strong>"Siguiente"</strong> ahora está habilitado.</p><p>Haz clic en él para ir a la próxima ventana.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'btnSiguiente'
+                }
+            ];
+
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+
+            // Listener para los clics en las filas de la tabla
+            const tableBody = document.querySelector(".table-content tbody");
+            if (tableBody) {
+                tableBody.addEventListener('click', (event) => {
+                    const clickedRow = event.target.closest('tr');
+                    if (clickedRow && clickedRow.id) {
+                        document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                            detail: { actionId: 'rowClicked', elementId: clickedRow.id }
+                        }));
+                    }
+                });
+            }
+            
+            // Listener para los botones de opciones (Create, Apply)
+            const optionButtons = ['crearParticion', 'apply-button', 'btnSiguiente'];
+            optionButtons.forEach(id => {
+                const button = document.getElementById(id);
+                if (button) {
+                    button.addEventListener('click', (event) => {
+                        // Prevenimos la navegación solo para el botón final "Siguiente"
+                        if (id === 'btnSiguiente') {
+                            event.preventDefault();
+                        }
+                        document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                            detail: { actionId: 'buttonClicked', elementId: id }
+                        }));
+
+                        if (id === 'btnSiguiente') {
+                            setTimeout(() => { window.location.href = button.href; }, 1500);
+                        }
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

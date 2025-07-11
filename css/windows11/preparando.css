@@ -1,0 +1,52 @@
+/* --- Estilos base para el fondo y la ventana (reutilizados) --- */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2a2a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.installer-window {
+    width: 670px;
+    height: 500px;
+    background: #000000; /* <-- CAMBIO CLAVE: Fondo negro */
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex; /* Lo usamos para centrar el contenido */
+    overflow: hidden;
+    position: relative;
+}
+
+
+/* --- Estilos para el nuevo contenido de la pantalla negra --- */
+
+/* Contenedor que ocupa toda la ventana para centrar el texto */
+.black-screen-content {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Estilo y animación para el mensaje de texto */
+.loading-message {
+    color: #ffffff;
+    font-size: 22px;
+    font-weight: 300; /* Un peso de fuente ligero */
+    animation: fadeIn 2s ease-in-out; /* Animación de aparición */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}

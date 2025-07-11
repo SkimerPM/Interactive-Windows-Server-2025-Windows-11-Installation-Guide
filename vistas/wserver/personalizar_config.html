@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../../css/wserver/personalizar_config.css" />
+    <link rel="stylesheet" href="../../css/modal.css">
+    <title>Personalizar Configuración</title>
+</head>
+
+<body>
+    <div class="window">
+        <div class="container">
+            <h2 class="title">Personalizar Configuración</h2>
+            <p>Escribe una contraseña para la cuenta predefinida de administrador que puedas usar para iniciar <br />
+                sesión en este equipo.</p>
+
+            <form class="form" action="">
+                <div class="label-input">
+                    <label for="name_user">Nombre de usuario</label>
+                    <input name="name-user" type="text" id="name_user" required />
+                </div>
+
+                <div class="label-input password-in">
+                    <label for="password">Contraseña</label>
+                    <div>
+                        <input type="password" name="password" id="pass" required />
+                        <img src="../../recursos/iconos/ojoAbierto.svg" alt="Mostrar/Ocultar contraseña" />
+                    </div>
+                </div>
+
+                <div class="label-input password-in">
+                    <label for="password_v">Volver a escribir la contraseña</label>
+                    <div>
+                        <input type="password" name="password_v" id="passV" required />
+                        <img src="../../recursos/iconos/ojoAbierto.svg" alt="Mostrar/Ocultar contraseña" />
+                    </div>
+                </div>
+
+                <span id="error-msg" style="color: rgb(255, 84, 84); font-size: 0.9rem;"></span>
+
+                <button type="submit" class="btn" id="btnFinalizar">Finalizar</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script src="../../JS/Wpersonalizar_config.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const WINDOWN_PRESENTER_IMG = 'https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png';
+
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_personalizar',
+                    title: "Paso Final: Crea tu Cuenta",
+                    content: `<p>¡La instalación ha terminado! Este es el último paso: crear la cuenta de administrador.</p><p>Cierra este mensaje para empezar.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_nombre_usuario',
+                    title: "1. Escribe el Nombre de Usuario",
+                    // CORREGIDO: El texto del tutorial ahora pide al usuario que escriba.
+                    content: `<p>En el campo "Nombre de usuario", escribe el nombre que desees para la cuenta de administrador. El tutorial avanzará cuando empieces a escribirlo.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top-left',
+                    triggerEvent: 'userInputted',
+                    nextStepAction: 'name_user'
+                },
+                {
+                    id: 'paso_escribir_pass',
+                    title: "2. Escribe una Contraseña",
+                    content: `<p>Ahora, introduce una contraseña segura en el primer campo. Luego, tendrás que confirmarla.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'top-right',
+                    triggerEvent: 'userInputted',
+                    nextStepAction: 'pass'
+                },
+                {
+                    id: 'paso_confirmar_pass',
+                    title: "3. Confirma la Contraseña",
+                    content: `<p>Vuelve a escribir la misma contraseña en el segundo campo. El tutorial avanzará cuando ambas coincidan y no haya errores.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-right' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'passwordsMatch',
+                    nextStepAction: 'passV'
+                },
+                {
+                    id: 'paso_finalizar',
+                    title: "¡Todo Listo!",
+                    content: `<p>¡Excelente! Has configurado tu cuenta. Haz clic en <strong>"Finalizar"</strong> para guardar los cambios y completar la instalación.</p>`,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'btnFinalizar'
+                }
+            ];
+
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+        });
+    </script>
+</body>
+
+</html>

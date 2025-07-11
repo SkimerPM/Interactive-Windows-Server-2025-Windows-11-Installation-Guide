@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desbloqueo de Windows Server</title>
+    <link rel="stylesheet" href="../../css/wserver/Wdesbloqueo.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+
+<body>
+    <div class="window">
+        <img class="window-background" src="/img/fondo.jpg" alt="Fondo de pantalla">
+
+
+        <div class="window-content" id="lock-screen" tabindex="0">
+            <img class="logo" id="lock-icon"
+                src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAACXBIWXMAAAsTAAALEwEAmpwYAAAAr0lEQVR4nO2TTQrCMBCFs1d3ep/aE+hxxI32SPYe9Sj+bssntq8bQQl0UojMB4FAHjMv8xOCkxvACqiABnjqvO9HYJk6+Ra48Z0rsEmZvFWiE1AAM501UOutNTdBX/bh57sfur00F9N20Pe8+3mEdqjEwdLAWUGLCG0pbWNp4KGg8wjtQtq7pYGOVHrzgP9hAGPyNRBG4gbwFggfwuBrONnwfOBDyNg1tCI/A06YiBezS/qBMHmeLQAAAABJRU5ErkJggg=="
+                alt="lock">
+            <p class="unlock-instruction">Presiona Ctrl + Alt + Supr para desbloquear</p>
+            <div class="time-display">
+                <h1 class="time" id="current-time">00:00</h1>
+                <p class="date" id="current-date">lunes, 1 de enero</p>
+            </div>
+            <p class="swipe-instruction">← Desliza para desbloquear →</p>
+        </div>
+
+        <div class="login-form" id="login-form">
+            <div class="user-icon">
+                <img src="https://img.icons8.com/?size=100&id=ABBSjQJK83zf&format=png&color=000000" alt="user" />
+            </div>
+            <h1 id="user"></h1>
+            <div class="password-input-container">
+                <input type="password" id="password-input" placeholder="Contraseña">
+
+                <div class="icons-container">
+
+                    <div class="login-action-icon">
+                        <img id="next-page-button"
+                            src="https://img.icons8.com/?size=100&id=96151&format=png&color=000000" alt="Siguiente">
+                    </div>
+
+                    <div class="password-toggle-icon">
+                        <img id="toggle-password"
+                            src="https://img.icons8.com/?size=100&id=99982&format=png&color=000000"
+                            alt="Ver contraseña">
+                    </div>
+
+                </div>
+            </div>
+            <div class="loading-indicator" id="loading-indicator">
+                <div class="loader"></div>
+                <p id="loading-message">Esperando a servicio de perfil de usuario...</p>
+            </div>
+        </div>
+    </div>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script src="../../JS/Wdesbloqueo.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const WINDOWN_PRESENTER_IMG = 'https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png';
+
+            const finalMessageSteps = [
+                {
+                    id: 'paso_final_felicitacion',
+                    title: "¡Felicidades! Has instalado Windows Server",
+                    content: `
+                        <p>Has completado todo el proceso de instalación y configuración de forma exitosa. ¡Excelente trabajo!</p>
+                        <p>Ahora, para acceder al sistema, presiona <strong>Ctrl + Alt + Del</strong> e inicia sesión con el usuario y la contraseña que creaste.</p>
+                        <p>¡Bienvenido al escritorio de Windows Server!</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-bottom' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed' // Al cerrar, el tutorial termina.
+                }
+            ];
+
+            // Inicia el "tutorial" que es solo este mensaje de bienvenida.
+            startTutorial(finalMessageSteps);
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/contrasena.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Nombre al Dispositivo</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <img src="../../img/w11/cuenta.png" alt="imagen de cuenta" class="benefits-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content">
+                <h1 class="title">Crear una contraseña muy fácil de recordar</h1>
+                <p class="subtitle">Asegúrate de elegir algo que puedas recordar con facilidad.</p>
+                
+                <div class="input-group">
+                    <label for="passwordInput">Escribir contraseña</label>
+                    <input type="password" id="passwordInput" placeholder="Contraseña" autocomplete="off">
+                </div>
+            </div>
+            <div class="footer">
+                <button class="btn-primary" id="nextButton" disabled>Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11contrasena.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla de CREAR CONTRASEÑA
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_contrasena',
+                    title: "Crear una Contraseña",
+                    content: `
+                        <p>¡Excelente! Ya creaste tu usuario. Ahora, vamos a proteger tu cuenta con una contraseña.</p>
+                        <p>Cierra este mensaje para comenzar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_escribir_contrasena',
+                    title: "Paso 1: Escribe tu Contraseña",
+                    content: `
+                        <p>En el campo de texto, escribe una contraseña que sea segura pero fácil de recordar para ti.</p>
+                        <p>El tutorial avanzará automáticamente en cuanto escribas algo y el botón "Siguiente" se active.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'inputValidated', // Usamos el mismo trigger que en la pantalla de nombre
+                    nextStepAction: 'passwordInput'
+                },
+                {
+                    id: 'paso_clic_siguiente',
+                    title: "¡Contraseña Lista!",
+                    content: `
+                        <p>¡Muy bien! Ahora que has escrito tu contraseña, haz clic en <strong>"Siguiente"</strong>.</p>
+                        <p>En el próximo paso, te pediremos que la escribas de nuevo para confirmarla.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'nextButton' 
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+            // 1. Reutilizamos el observador para detectar cuando el botón "Siguiente" se habilita
+            if (nextButton) {
+                const observer = new MutationObserver((mutationsList) => {
+                    for (const mutation of mutationsList) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
+                            if (!nextButton.disabled) {
+                                // Avisamos al tutorial que la validación fue exitosa
+                                document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                                    detail: { actionId: 'inputValidated', elementId: 'passwordInput' }
+                                }));
+                                observer.disconnect(); // Dejamos de observar
+                            }
+                        }
+                    }
+                });
+
+                // Configuramos al observador para que vigile al botón
+                observer.observe(nextButton, { attributes: true });
+            }
+        });
+    </script>
+</body>
+
+</html>

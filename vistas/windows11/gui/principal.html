@@ -1,0 +1,505 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Apartado principal</title>
+
+    <link rel="stylesheet" href="../../../css/wserver/gui/principal.css" />
+  </head>
+
+  <body>
+    <div class="window">
+      <img
+        class="window-background"
+        src="/img/w11/fondo_w11.jpg"
+        alt="Fondo de pantalla"
+      />
+      <div class="window-content">
+        <div class="iconos-pantalla">
+          <div class="icono-cont">
+            <img
+              class="icono"
+              src="https://img.icons8.com/?size=192&id=74176&format=png"
+              alt=""
+            />Papelera
+          </div>
+          <div class="icono-cont">
+            <img
+              class="icono"
+              src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png"
+              alt=""
+            />Edge
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <div class="uno">
+          <img
+            class="icon-footer primero"
+            src="../../../recursos/iconos/gui/windows11.svg"
+            alt=""
+          />
+          <div class="input">
+            <img
+              class="icon-footer"
+              src="../../../icons/lupa.svg"
+              alt="lupa-icono"
+            />
+            <input type="text" placeholder="Búsqueda" />
+          </div>
+          <img
+            class="icon-footer secu"
+            src="https://images.icon-icons.com/195/PNG/256/File_Explorer_23583.png"
+            alt="explorador-de-archivos-icon"
+          />
+          <img
+            class="icon-footer secu"
+            src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Microsoft_Edge_logo_%282019%29.png"
+            alt="administrador-de-servidor-icon"
+          />
+          <img
+            id="settings-icon"
+            class="icon-footer secu"
+            src="https://upload.wikimedia.org/wikipedia/commons/0/05/Microsoft_Store_Fluent_Design_icon_%282%29.png"
+            alt="ajustes-icono"
+          />
+        </div>
+        <div class="dos">
+          <img
+            src="https://images.icon-icons.com/779/PNG/512/ethernet_icon-icons.com_64699.png"
+            class="icon-footer secu"
+            alt="icon-ethernet"
+          />
+          <img
+            src="https://images.icon-icons.com/1678/PNG/512/wondicon-ui-free-speaker_111240.png"
+            class="icon-footer secu"
+            alt="icon-volumen"
+          />
+          <img
+            src="https://images.icon-icons.com/1776/PNG/512/lowbattery_114254.png"
+            class="icon-footer secu"
+            alt="bateria icono"
+          />
+          <div class="fecha-hora">
+            <p id="current-time"></p>
+            <p id="current-date"></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="ajustesContainer" style="display: none">
+      <div class="header-ajustes">
+        <div class="h-izquierda">
+          <img
+            class="h-icon"
+            src="https://images.icon-icons.com/1415/PNG/512/ic-back_97586.png"
+            alt="flecha-volver"
+          />
+          <p>Configuración</p>
+        </div>
+        <div class="h-derecha">
+          <img
+            id="minimize-settings-icon"
+            class="h-icon"
+            src="https://images.icon-icons.com/1863/PNG/512/minimize_118918.png"
+            alt="minimizar icono"
+          />
+          <img
+            id="maximize-settings-icon"
+            class="h-icon"
+            src="https://images.icon-icons.com/1143/PNG/512/squareroundedemptyoutlinedbuttonshape_80680.png"
+            alt="cuadrado minmizar tamaño icono"
+          />
+          <img
+            id="close-settings-icon"
+            class="h-icon"
+            src="https://images.icon-icons.com/1993/PNG/512/cancel_close_delete_exit_logout_remove_x_icon_123217.png"
+            alt="cerrar venana icono"
+          />
+        </div>
+      </div>
+      <div class="main-ajustes">
+        <div class="main-a-izquierda">
+          <div class="cuenta-ajustes">
+            <figure>
+              <img
+                class="icon-user"
+                src="https://images.icon-icons.com/67/PNG/512/user_13230.png"
+                alt="user imagen"
+              />
+            </figure>
+            <div>
+              <h3>Usuario</h3>
+              <p>Cuenta local</p>
+            </div>
+          </div>
+          <div class="inpt-ajustes">
+            <input type="text" placeholder="Busca una configuración" />
+            <img src="../../../icons/lupa.svg" alt="lupa-icono" />
+          </div>
+          <div class="component-main-izquierda primero">
+            <img
+              src="https://images.icon-icons.com/1808/PNG/512/computer_115306.png"
+              alt=""
+            />
+            <p>Sistema</p>
+          </div>
+          <div class="component-main-izquierda">
+            <img
+              src="https://www.svgrepo.com/show/452168/bluetooth.svg"
+              alt=""
+            />
+            <p>Bluetooth y dispositivos</p>
+          </div>
+          <div class="component-main-izquierda">
+            <img
+              src="https://img.icons8.com/?size=96&id=Nw9d0a7KroDU&format=png"
+              alt=""
+            />
+            <p>Red e Internet</p>
+            <!--  -->
+          </div>
+          <div class="component-main-izquierda">
+            <img
+              src="https://img.icons8.com/?size=96&id=f6JWKSr8MIKR&format=png"
+              alt=""
+            />
+
+            <p>Personalización</p>
+          </div>
+          <div class="component-main-izquierda">
+            <img
+              src="https://img.icons8.com/?size=96&id=kJr8od2fGcmF&format=png"
+              alt=""
+            />
+            <p>Aplicaciones</p>
+          </div>
+          <div class="component-main-izquierda">
+            <img
+              src="https://img.icons8.com/?size=96&id=kDoeg22e5jUY&format=png"
+              alt=""
+            />
+            <p>Cuentas</p>
+          </div>
+          <div class="component-main-izquierda">
+            <img
+              src="https://img.icons8.com/?size=128&id=118947&format=png"
+              alt=""
+            />
+            <p>Hora e idioma</p>
+          </div>
+          <div class="component-main-izquierda">
+            <img
+              src="https://img.icons8.com/?size=128&id=119257&format=png"
+              alt=""
+            />
+            <p>Accesibilidad</p>
+          </div>
+
+          <div class="component-main-izquierda">
+            <img
+              src="https://img.icons8.com/?size=48&id=vy6OvJYHSJ8I&format=png"
+              alt="asd"
+            />
+            <p>Privacidad y seguridad</p>
+          </div>
+          <div
+            class="component-main-izquierda"
+            onclick="window.location.href='windows_update.html'"
+          >
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/10695/10695869.png"
+              alt=""
+            />
+            <p>Windowns Update</p>
+          </div>
+        </div>
+        <div class="main-a-derecha">
+          <h3>Sistema</h3>
+          <div class="img-usuario">
+            <img src="/img/fondo.jpg" alt="Fondo de pantalla" />
+            <div>
+              <span>WIN-PCNAME8SBBN</span>
+              <p id="nombrepc">FFF_Laptop</p>
+              <a href="#" onClick="viewCambiarNombre()">Cambiar nombre</a>
+            </div>
+          </div>
+          <div id="uno-dos-uno" class="uno-dos">
+            <img
+              src="https://cdn-icons-png.flaticon.com/128/10695/10695869.png"
+              alt=""
+            />
+            <div>
+              <span>Windows Update</span>
+              <p>Actualizado</p>
+            </div>
+          </div>
+
+          <div class="opcionesDerecha">
+            <div onclick="redireccion()" class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/3647/3647039.png"
+                alt=""
+              />
+              <div>
+                <span>Pantalla</span>
+                <p>Monitores, brillos, luz nocturna, perfil de pantalla</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/482/482640.png"
+                alt=""
+              />
+              <div>
+                <span>Sonido</span>
+                <p>
+                  Biveles de volumen, salida, entrada, dispositivos de sonido
+                </p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/15487/15487326.png"
+                alt=""
+              />
+              <div>
+                <span>Notificaciones</span>
+                <p>Alerta de aplicaciones y sistemas, no molestar</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Concentración</span>
+                <p>Reducir distracciones</p>
+              </div>
+            </div>
+            <!-- ---------------------------- -->
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Energía y batería</span>
+                <p>Suspención, uso de la batería, ahorro de la batería</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Alamacenamiento</span>
+                <p>
+                  Espacio de almacenaiento, unidades, reglas de configuración
+                </p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Uso compartido en proximidad</span>
+                <p>Detectabilidad, ubicación de archivos compartidos</p>
+              </div>
+            </div>
+
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Multitareas</span>
+                <p>Acoplar ventanas, escritorios, cambios de tareas</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Para programadores</span>
+                <p>
+                  Estas opcioones estpan pensadas solo con fines de desarrollo
+                </p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Activación</span>
+                <p>Estado de activación, suscripciones, clave producto</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Solución de problemas</span>
+                <p>
+                  Soluciones de problemas recomendados,preferencias, historial
+                </p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Recuperación</span>
+                <p>Reiniciar, inicio avanzado, volver</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Proyectar en este equipo</span>
+                <p>Permisos, PIN de emparejamiento, detectar</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Escritorio remoto</span>
+                <p>Usuario de escritorio remoto, permisos de conexion</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Portapapeles</span>
+                <p>Historial de cortar y copiar, sincronización y boorrado</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Compoentes del sistema</span>
+                <p>Administrar componentes preinstalados en windows</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Características opcionales</span>
+                <p>Funcionalidad adicional para el dispositivo</p>
+              </div>
+            </div>
+            <div class="uno-dos opcion">
+              <img
+                src="https://cdn-icons-png.flaticon.com/128/61/61136.png"
+                alt=""
+              />
+              <div>
+                <span>Información</span>
+                <p>
+                  Especificaciones del dispositivo, cambiar nombre de la pc,
+                  especificaciones de windows
+                </p>
+              </div>
+            </div>
+          </div>
+          <div id="cambiar-nombre">
+            <div id="contenido-cambiar-nombre">
+              <h4>Cambiar el nombre de tu PC</h4>
+
+              <p>Puedes usar una combinación de letras, guiones y números</p>
+
+              <span
+                >Nombre actual del equipo: <br />
+                <p id="nombrepc2"></p
+              ></span>
+
+              <div class="input-nombre">
+                <input type="text" />
+                <img
+                  src="https://img.icons8.com/?size=48&id=95867&format=png"
+                  alt="equisde nombre"
+                />
+              </div>
+              <div class="bts-cambiar-nombre">
+                <div class="cn-buttons">
+                  <button class="btn-cambiar-nombre" onclick="msgReiniciar()">
+                    Siguiente
+                  </button>
+                  <button
+                    onclick="viewCambiarNombre()"
+                    class="btn-cambiar-nombre-dos"
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      function updateDateTime() {
+        const now = new Date();
+
+        // Formatear la hora
+        const hours = now.getHours().toString().padStart(2, "0");
+        const minutes = now.getMinutes().toString().padStart(2, "0");
+        document.getElementById(
+          "current-time"
+        ).textContent = `${hours}:${minutes}`;
+
+        // Formatear la fecha
+        const options = { weekday: "long", day: "numeric", month: "long" };
+        const dateStr = now.toLocaleDateString("es-ES", options);
+        document.getElementById("current-date").textContent = dateStr;
+      }
+      updateDateTime();
+      setInterval(updateDateTime, 60000);
+    </script>
+
+    <div class="felicitaciones-overlay">
+      <div class="felicitaciones-modal">
+        <img src="https://cdn-icons-png.flaticon.com/128/190/190411.png" alt="Trofeo" class="trophy-icon">
+        <h1>¡Felicidades!</h1>
+        <p>
+          Has completado la instalación y configuración de Windows 11 de forma correcta.
+          <br><br>
+          Como has visto, con una guía paso a paso, ¡es un proceso muy sencillo!
+        </p>
+        <a href="../../../index.html" class="btn-volver">Volver al Inicio</a>
+        <img src="https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png" alt="Windown, tu guía" class="modal-presenter-final">
+      </div>
+    </div>
+
+  </body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/privacidad.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Nombre al Dispositivo</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <img src="../../img/w11/privacidad.png" alt="Iconos de privacidad" class="benefits-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content scrollable" id="privacyContent">
+                <h1 class="title">Elegir la configuración de privacidad del dispositivo</h1>
+                <p class="subtitle">Microsoft te permite controlar tu privacidad. Elige la configuración y luego selecciona Aceptar para guardarla. Puedes cambiar la configuración en cualquier momento.</p>
+                
+                <div class="privacy-settings-list">
+                    <div class="privacy-setting-item">
+                        <h3>Ubicación</h3>
+                        <p>Permite que Windows y las aplicaciones soliciten tu ubicación, así como que Microsoft use los datos de ubicación para mejorar los servicios de ubicación.</p>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="locationToggle" class="toggle-input" checked>
+                            <label for="locationToggle" class="toggle-label"></label>
+                            <span class="toggle-status"></span>
+                        </div>
+                    </div>
+
+                    <div class="privacy-setting-item">
+                        <h3>Encontrar mi dispositivo</h3>
+                        <p>Activa "Encontrar mi dispositivo" y usa los datos de ubicación del dispositivo para que puedas encontrarlo si se te pierde.</p>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="findDeviceToggle" class="toggle-input" checked>
+                            <label for="findDeviceToggle" class="toggle-label"></label>
+                            <span class="toggle-status"></span>
+                        </div>
+                    </div>
+
+                    <div class="privacy-setting-item">
+                        <h3>Datos de diagnóstico</h3>
+                        <p>Envía datos de diagnóstico opcionales sobre cómo usas las aplicaciones y funciones, además de información adicional sobre el estado y la actividad del dispositivo y un informe de errores mejorado.</p>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="diagnosticsToggle" class="toggle-input" checked>
+                            <label for="diagnosticsToggle" class="toggle-label"></label>
+                            <span class="toggle-status"></span>
+                        </div>
+                    </div>
+
+                    <div class="privacy-setting-item">
+                        <h3>Entrada manuscrita y escritura</h3>
+                        <p>Envía datos de diagnóstico opcionales sobre entrada manuscrita y escritura a Microsoft para mejorar las funciones de reconocimiento de idioma y sugerencia de aplicaciones.</p>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="inkingToggle" class="toggle-input" checked>
+                            <label for="inkingToggle" class="toggle-label"></label>
+                            <span class="toggle-status"></span>
+                        </div>
+                    </div>
+
+                    <div class="privacy-setting-item">
+                        <h3>Experiencias personalizadas</h3>
+                        <p>Permite que Microsoft use tus datos de diagnóstico, excepto información sobre los sitios web que exploras, para ofrecer sugerencias y anuncios personalizados.</p>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="tailoredToggle" class="toggle-input" checked>
+                            <label for="tailoredToggle" class="toggle-label"></label>
+                            <span class="toggle-status"></span>
+                        </div>
+                    </div>
+
+                    <div class="privacy-setting-item">
+                        <h3>Id. de publicidad</h3>
+                        <p>Las aplicaciones pueden usar el id. de publicidad para proporcionar anuncios más personalizados de acuerdo con la directiva de privacidad del proveedor de la aplicación.</p>
+                        <div class="toggle-container">
+                            <input type="checkbox" id="advertisingToggle" class="toggle-input" checked>
+                            <label for="advertisingToggle" class="toggle-label"></label>
+                            <span class="toggle-status"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <button class="btn-secondary" id="moreInfoButton">Más información</button>
+                <button class="btn-primary" id="actionButton">Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11privacidad.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla de CONFIGURACIÓN DE PRIVACIDAD
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_privacidad',
+                    title: "Configuración de Privacidad",
+                    content: `
+                        <p>¡Ya casi hemos terminado! Este es uno de los últimos pasos, donde eliges cómo Windows maneja tu información.</p>
+                        <p>Cierra este mensaje para ver las opciones.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_explicar_opciones',
+                    title: "Tus Preferencias",
+                    content: `
+                        <p>Aquí puedes activar o desactivar diferentes servicios como la ubicación o los datos de diagnóstico.</p>
+                        <p>Para este tutorial, no es necesario que cambies nada. Puedes dejar las opciones por defecto.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'right',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_hacer_scroll',
+                    title: "Paso 1: Revisa todas las Opciones",
+                    content: `
+                        <p>Para poder continuar, primero debes desplazarte hasta el final de la lista.</p>
+                        <p>Fíjate cómo el botón de abajo dirá <strong>"Siguiente"</strong>. Cuando llegues al final, cambiará a <strong>"Aceptar"</strong>. ¡Hazlo ahora!</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-right' },
+                    modalAlignment: 'left',
+                    triggerEvent: 'buttonTextChanged', // Un trigger que se activa cuando el texto del botón cambia
+                    nextStepAction: 'actionButton'
+                },
+                {
+                    id: 'paso_clic_aceptar',
+                    title: "Paso 2: Aceptar y Finalizar",
+                    content: `
+                        <p>¡Perfecto! El botón ahora dice "Aceptar".</p>
+                        <p><strong>Este es el último paso de la configuración.</strong> Al hacer clic, el sistema buscará actualizaciones y se reiniciará para aplicar todo.</p>
+                        <p>Haz clic en <strong>"Aceptar"</strong> para terminar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'actionButton' 
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+
+            const actionButton = document.getElementById('actionButton');
+
+            // 1. Listener para el clic en el botón de acción ("Siguiente" o "Aceptar")
+            if (actionButton) {
+                actionButton.addEventListener('click', () => {
+                    // Solo nos interesa el clic final para el tutorial
+                    if (actionButton.textContent === 'Aceptar') {
+                        document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                            detail: { actionId: 'buttonClicked', elementId: 'actionButton' }
+                        }));
+                    }
+                });
+            }
+
+            // 2. Observador que vigila el texto del botón para saber cuándo cambia a "Aceptar"
+            if (actionButton) {
+                const observer = new MutationObserver(() => {
+                    if (actionButton.textContent === 'Aceptar') {
+                        console.log("El botón ha cambiado a 'Aceptar'. Avanzando tutorial.");
+                        
+                        // Avisamos al tutorial que la condición (hacer scroll) se cumplió
+                        document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                            detail: { actionId: 'buttonTextChanged', elementId: 'actionButton' }
+                        }));
+
+                        // Dejamos de observar una vez que el cambio ha ocurrido
+                        observer.disconnect();
+                    }
+                });
+
+                // Configuramos al observador para que vigile los cambios en el contenido del botón
+                observer.observe(actionButton, { childList: true, subtree: true });
+            }
+        });
+    </script>
+</body>
+
+</html>

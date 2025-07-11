@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/finalizando.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finalizando Instalación</title>
+</head>
+<body>
+    <div class="installer-window">
+        <div class="fullscreen-content">
+            <div class="text-wrapper">
+                <h1 id="loadingHeadline">Esto podría tardar algunos minutos.</h1>
+                <p>No apagues el equipo</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // --- LÓGICA DE TEXTO DINÁMICO ---
+
+            // 1. Array con las frases que se mostrarán DESPUÉS de la inicial.
+            const phrases = [
+                "Mantén el equipo conectado.",
+                "Ya casi hemos terminado."
+            ];
+
+            // 2. Seleccionamos el h1 por su nuevo ID.
+            const headlineElement = document.getElementById('loadingHeadline');
+            let phraseIndex = 0; // Para saber qué frase mostrar.
+
+            // 3. Creamos un intervalo que se ejecuta cada 4 segundos.
+            const phraseInterval = setInterval(() => {
+                // Si ya no hay más frases en la lista, detenemos el intervalo.
+                if (phraseIndex >= phrases.length) {
+                    clearInterval(phraseInterval);
+                    return;
+                }
+
+                // Cambiamos el texto del h1 por el de la frase actual.
+                headlineElement.textContent = phrases[phraseIndex];
+                
+                // Pasamos a la siguiente frase para la próxima vez.
+                phraseIndex++;
+
+            }, 4000); // 4000 milisegundos = 4 segundos
+
+
+            // --- LÓGICA DE REDIRECCIÓN AUTOMÁTICA (se mantiene igual) ---
+
+            // El temporizador de 12 segundos empieza a contar en cuanto la página carga.
+            const delay = 12000;
+            const finalPageUrl = 'gui/principal.html'; // Tu página de destino.
+
+            setTimeout(() => {
+                window.location.href = finalPageUrl;
+            }, delay);
+
+        });
+    </script>
+</body>
+</html>

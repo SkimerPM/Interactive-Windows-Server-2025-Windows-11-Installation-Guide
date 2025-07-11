@@ -1,0 +1,69 @@
+/* 1. Estilos base para el fondo y la ventana */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #2a2a2a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.installer-window {
+    width: 670px;
+    height: 500px;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    overflow: hidden; /* Importante para que el contenido no se salga de los bordes redondeados */
+    position: relative;
+}
+
+
+/* 2. Estilos para el contenido de la pantalla azul oscuro */
+
+/* Este contenedor llenará la ventana por completo */
+.fullscreen-content {
+    width: 100%;
+    height: 100%;
+    
+    /* Fondo azul oscuro con un gradiente radial para darle el efecto de la imagen */
+    background-color: #0c0a28;
+    background-image: radial-gradient(circle, #1e3a8a, #0c0a28);
+    
+    /* Usamos Flexbox para centrar el texto perfectamente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+/* Animación sutil para el texto */
+.text-wrapper {
+   animation: fadeIn 2s ease-in-out; /* Animación de aparición */
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Estilos para los textos */
+.text-wrapper h1 {
+    font-size: 32px;
+    font-weight: 200; /* Estilo ligero */
+    color: #ffffff;
+    margin: 0;
+}
+
+.text-wrapper p {
+    font-size: 16px;
+    font-weight: 400;
+    color: #ffffff;
+    margin-top: 10px;
+    opacity: 0.9;
+}

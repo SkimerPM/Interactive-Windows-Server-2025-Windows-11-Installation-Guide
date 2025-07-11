@@ -1,0 +1,172 @@
+.main-title {
+            color: #2a8dd4;
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI Light', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .description {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 10px;
+            line-height: 1.4;
+        }
+
+        .format-info {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+
+        .input-section {
+            margin-bottom: 30px;
+        }
+
+        .input-label {
+            font-size: 12px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .product-key-input {
+            width: 400px;
+            height: 20px;
+            padding: 4px 6px;
+            border: 1px solid #ccc;
+            border-bottom: 3px solid #2a8dd4;
+            font-size: 12px;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: #333;
+            outline: none;
+        }
+
+        .product-key-input:focus {
+            border-bottom: 3px solid #1a6db4;
+        }
+
+        .character-counter {
+            font-size: 11px;
+            color: #2a8dd4;
+            margin-top: 5px;
+        }
+
+        .bottom-links {
+            position: absolute;
+            bottom: 200px;
+        }
+
+        .link {
+            color: #2a8dd4;
+            text-decoration: none;
+            font-size: 12px;
+            display: block;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .link:hover {
+            color: #1a6db4;
+        }
+
+        /* Modal de Ayuda */
+        .help-modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            z-index: 1000;
+        }
+
+        .help-modal {
+            position: fixed;
+            top: 50%;
+            left: 40%;
+            transform: translate(-50%, -50%);
+            width: 300px;
+            height: 500px;
+            background: #f0f0f0;
+            border: solid 0px #A6C0DB;
+            border-width: 0px 8px 8px 8px;
+            border-radius: 3px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            z-index: 1001;
+            display: none;
+        }
+
+        .help-modal-header {
+            background: linear-gradient(to bottom, #C0D3E6, #A8C1DB);
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 2px 6px;
+            border-bottom: 1px solid #999;
+        }
+
+        .help-modal-title {
+            display: flex;
+            align-items: center;
+            font-size: 11px;
+            color: #000;
+        }
+
+        .help-modal-icon {
+            width: 16px;
+            height: 16px;
+            margin-right: 4px;
+            background: #4A90E2;
+            border-radius: 2px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+        }
+
+        .help-modal-close {
+            width: 16px;
+            height: 14px;
+            background: linear-gradient(to bottom, #E5A093, #BD513B);
+            border: 1px solid #999;
+            color: white;
+            font-size: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 1px;
+        }
+
+        .help-modal-content {
+            padding: 15px;
+            height: 440px;
+            overflow-y: auto;
+            background: white;
+            font-size: 11px;
+            line-height: 1.4;
+        }
+
+        .help-modal-content h3 {
+            color: #000;
+            font-size: 12px;
+            margin: 0 0 10px 0;
+            font-weight: normal;
+        }
+
+        .help-modal-content p {
+            margin: 0 0 10px 0;
+            color: #000;
+        }
+
+        .help-modal-content a {
+            color: #000;
+            text-decoration: none;
+            cursor: text;
+        }

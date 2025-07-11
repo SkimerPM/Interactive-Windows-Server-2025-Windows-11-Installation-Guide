@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ 3F's</title>
+    <link rel="stylesheet" href="../css/faq.css">
+</head>
+<body>
+    <div class="faq-container">
+        <div class="faq-header">
+            <h1>Preguntas Frecuentes</h1>
+            <p>Encuentra respuestas rápidas sobre VirtualBox 2025, conexiones de red y simulación de Windows.</p>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo instalar VirtualBox 2025 en Windows 11?</div>
+            <div class="faq-answer">
+                <p>Sigue estos pasos:</p>
+                <ol>
+                    <li>Descarga el instalador desde el sitio oficial de Oracle.</li>
+                    <li>Ejecuta el archivo <code>VirtualBox-7.0.x-xxxxxx-Win.exe</code> como administrador.</li>
+                    <li>Acepta los permisos de instalación de dispositivos.</li>
+                    <li>Reinicia tu equipo después de la instalación.</li>
+                </ol>
+                <p><strong>Nota:</strong> Requiere habilitar <em>Virtualización</em> en la BIOS.</p>
+            </div>
+        </div>
+
+
+        <div class="faq-item">
+            <div class="faq-question">¿Cómo simular un entorno de dominio con Windows Server?</div>
+            <div class="faq-answer">
+                <p>Pasos básicos:</p>
+                <ol>
+                    <li>Crea una VM con Windows Server 2022.</li>
+                    <li>Instala el rol <em>Active Directory Domain Services</em>.</li>
+                    <li>Configura el DNS y las direcciones IP estáticas.</li>
+                    <li>Une máquinas virtuales con Windows 11 al dominio.</li>
+                </ol>
+                <p><a href="#" class="faq-link">Ver guía detallada aquí</a> (próximamente).</p>
+            </div>
+        </div>
+
+        <div class="faq-item">
+            <div class="faq-question">¿VirtualBox 2025 soporta Windows 11 con TPM 2.0?</div>
+            <div class="faq-answer">
+                <p>Sí, pero necesitas habilitar manualmente el TPM virtual:</p>
+                <code>
+                    # Ejecutar en CMD (Host): <br>
+                    cd "C:\Program Files\Oracle\VirtualBox\" <br>
+                    VBoxManage modifyvm "NombreVM" --tpm-type=2.0 --firmware=efi
+                </code>
+                <p>Luego instala Windows 11 normalmente.</p>
+            </div>
+        </div>
+    </div>
+    <script src="../JS/script.js"></script>
+    <script src="../JS/faq.js"></script>
+</body>
+</html>

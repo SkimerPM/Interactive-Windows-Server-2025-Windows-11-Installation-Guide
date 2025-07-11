@@ -1,0 +1,44 @@
+
+        .main-title {
+            color: #2a8dd4;
+            font-size: 24px;
+            font-weight: normal;
+            margin-bottom: 40px;
+            font-family: 'Segoe UI Light', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .form-label {
+            width: 170px;
+            font-size: 12px;
+            color: #333;
+        }
+
+        .form-select {
+            width: 250px;
+            padding: 3px;
+            border: 1px solid #7a7a7a;
+            background-color: white;
+            font-size: 12px;
+            position: relative;
+        }
+
+        .form-select select {
+            width: 100%;
+            font-size: 12px;
+            border: none;
+            background: transparent;
+            outline: none;
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            padding-right: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="12" height="6"><path d="M0,0 L12,0 L6,6 Z" fill="%23666"/></svg>');
+            background-repeat: no-repeat;
+            background-position: right 5px center;
+        }

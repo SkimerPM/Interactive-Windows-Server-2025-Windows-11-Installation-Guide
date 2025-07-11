@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/nombre_dispositivo.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Nombre al Dispositivo</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <div class="icon-wrapper">
+                <svg class="laptop-svg" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg"><path d="M54,49H10a2,2,0,0,1-2-2V17a2,2,0,0,1,2-2H54a2,2,0,0,1,2,2V47A2,2,0,0,1,54,49ZM10,17V47H54V17Z" fill="#d1d5db"></path><rect x="14" y="24" width="36" height="4" fill="#0078d4"></rect><path d="M60,51H4a2,2,0,0,1,0-4H60a2,2,0,0,1,0,4Z" fill="#d1d5db"></path></svg>
+                <svg class="checkmark-svg" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path fill="#10b981" d="M12,2A10,10,0,1,0,22,12,10,10,0,0,0,12,2Zm5.71,8.71L10.5,17.9a1,1,0,0,1-1.42,0l-3-3a1,1,0,0,1,1.42-1.42L10,14.09l6.29-6.29a1,1,0,0,1,1.42,1.42Z"></path></svg>
+            </div>
+        </div>
+        
+        <div class="right-panel">
+            <div class="content">
+                <h1 class="title">Asignemos un nombre al dispositivo</h1>
+                <p class="subtitle">Consígalo con un nombre único que sea fácil de reconocer al conectarse a él desde otros dispositivos.</p>
+                <p class="restart-notice">El dispositivo se reiniciará después de asignarle un nombre.</p>
+
+                <div class="input-wrapper">
+                    <input type="text" id="deviceNameInput" placeholder="Asigne un nombre al dispositivo" maxlength="15" autocomplete="off">
+                </div>
+
+                <ul class="validation-rules">
+                    <li>No puede contener solo números</li>
+                    <li>No más de 15 caracteres</li>
+                    <li>No hay espacios ni caracteres especiales que no sean guiones ( - )</li>
+                </ul>
+            </div>
+            
+            <div class="footer">
+                <button class="btn-secondary" id="skipButton">Omitir por ahora</button>
+                <button class="btn-primary" id="nextButton" disabled>Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11nombre_dispositivo.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla de NOMBRE DEL DISPOSITIVO
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_nombre',
+                    title: "Dale un Nombre a tu PC",
+                    content: `
+                        <p>En este paso, le daremos un nombre único a tu equipo.</p>
+                        <p>Este nombre te ayudará a identificarlo en tu red local. Cierra este mensaje para empezar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_escribir_nombre',
+                    title: "Paso 1: Escribe un Nombre",
+                    content: `
+                        <p>Usa el campo de texto para escribir un nombre para tu dispositivo, por ejemplo: "PC-de-Juan".</p>
+                        <p>Fíjate en las reglas de abajo. El tutorial avanzará automáticamente cuando escribas un nombre válido y el botón "Siguiente" se active.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'inputValidated', // Un nuevo trigger que se activará cuando la validación sea correcta
+                    nextStepAction: 'deviceNameInput'
+                },
+                {
+                    id: 'paso_clic_siguiente',
+                    title: "¡Perfecto!",
+                    content: `
+                        <p>¡Buen nombre! El botón "Siguiente" ya está disponible.</p>
+                        <p>Haz clic en él para guardar el nombre y continuar con la configuración.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'nextButton' 
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+
+            const nextButton = document.getElementById('nextButton');
+
+            // 1. Listener para el botón "Siguiente"
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (!nextButton.disabled) {
+                        document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                            detail: { actionId: 'buttonClicked', elementId: 'nextButton' }
+                        }));
+                    }
+                });
+            }
+
+            // 2. TÉCNICA AVANZADA: Observador para el botón "Siguiente"
+            // Esto nos permite detectar cuando tu otro script (W11nombre_dispositivo.js) habilita el botón.
+            if (nextButton) {
+                const observer = new MutationObserver((mutationsList) => {
+                    for (const mutation of mutationsList) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
+                            // Si el atributo 'disabled' ha sido quitado...
+                            if (!nextButton.disabled) {
+                                console.log("El botón 'Siguiente' ha sido habilitado. Avanzando tutorial.");
+                                document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                                    detail: { actionId: 'inputValidated', elementId: 'deviceNameInput' }
+                                }));
+                                observer.disconnect(); // Dejamos de observar una vez que se ha activado.
+                            }
+                        }
+                    }
+                });
+
+                // Le decimos al observador que vigile los cambios de atributos en el botón "Siguiente"
+                observer.observe(nextButton, { attributes: true });
+            }
+        });
+    </script>
+</body>
+
+</html>

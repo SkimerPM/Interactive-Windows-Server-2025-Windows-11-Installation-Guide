@@ -1,0 +1,196 @@
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #a8c8ec 0%, #7db3e8 100%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.installer-window {
+    width: 670px;
+    height: 500px;
+    background: #f0f0f0;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+}
+
+.left-panel {
+    width: 200px;
+    background: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.benefits-image {
+    width: 200px;
+    height: auto;
+    object-fit: contain;
+}
+
+.right-panel {
+    flex: 1;
+    padding: 30px 50px;
+    background: #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.content {
+    flex: 1;
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 400;
+    color: #333;
+    line-height: 1.3;
+    margin: 0;
+}
+
+/* Encabezado "Microsoft" con logo */
+.account-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+}
+.microsoft-logo {
+    width: 21px;
+    height: 21px;
+}
+.account-header h2 {
+    font-size: 15px;
+    font-weight: 600;
+    color: #333;
+    margin: 0;
+}
+
+.options-title {
+    font-size: 24px;
+    font-weight: 400;
+    margin: 25px 0 15px 0;
+}
+
+.login-options-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 25px;
+}
+
+.login-option-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+.login-option-item:hover {
+    border-color: #0078d4;
+}
+
+.options-title {
+    font-size: 16px;
+    font-weight: 400;
+    margin: 15px 0 15px 0;
+}
+.option-icon {
+    flex-shrink: 0;
+    width: 24px;
+    height: 24px;
+    color: #555;
+}
+.option-icon svg {
+    width: 100%;
+    height: 100%;
+}
+
+.option-text {
+    flex-grow: 1;
+}
+.option-text h4 {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+}
+.option-text p {
+    margin: 3px 0 0 0;
+    font-size: 12px;
+    color: #555;
+}
+
+.info-icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    color: #666;
+}
+
+/* Footer y botón secundario */
+.footer {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    gap: 20px;
+    justify-content: flex-end;
+}
+.btn-secondary,
+.footer .btn-secondary {
+    background: transparent;
+    color: #0067b8;
+    border: none;
+    font-size: 14px;
+    cursor: pointer;
+    padding: 10px;
+    max-width: 110px;
+}
+.btn-secondary:hover,
+.footer .btn-secondary:hover {
+    background-color: transparent;
+    text-decoration: underline;
+}
+
+/* Iconos inferiores */
+.bottom-icons {
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 15px;
+}
+.icon {
+    width: 24px;
+    height: 24px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 4px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.2s ease;
+}
+.icon:hover {
+    background: rgba(255, 255, 255, 0.9);
+}
+.accessibility-icon::before {
+    content: '♿';
+    font-size: 14px;
+    color: #666;
+}
+.volume-icon::before {
+    content: '🔊';
+    font-size: 12px;
+}

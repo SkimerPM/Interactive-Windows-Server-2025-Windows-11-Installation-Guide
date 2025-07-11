@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows Server - Teclado</title>
+    <link rel="stylesheet" href="../../css/wserver/idioma.css">
+    <link rel="stylesheet" href="../../css/wserver/ventana.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows Server</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="main-title">Seleccionar configuración del teclado</h1>
+
+                <div class="form-group">
+                    <div class="form-label">Teclado o método de entrada</div>
+                    <div class="form-select">
+                        <select id="selectTeclado">
+                            <option>Español</option>
+                            <option>Latinoamérica</option>
+                            <option>Inglés (Estados Unidos)</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <a href="idioma.html" class="btn">Atrás</a>
+                    <a href="configuracion.html" class="btn btn-next" id="btnSiguiente">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script src="../../JS/script_logo.js"></script> 
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL del presentador
+            const WINDOWN_PRESENTER_IMG = 'https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png';
+
+            // Define los pasos específicos para la página del TECLADO
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_teclado',
+                    title: "Paso 2: Configuración del Teclado",
+                    content: `
+                        <p>¡Buen trabajo! Ahora vamos a configurar la distribución del teclado.</p>
+                        <p>Esto asegura que las teclas que presionas coincidan con los caracteres que aparecen en pantalla (como la 'ñ', acentos y símbolos).</p>
+                        <p>Cierra este mensaje para continuar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed', // Avanza al cerrar el modal
+                    nextStepAction: null
+                },
+                {
+                    id: 'paso_seleccionar_distribucion',
+                    title: "Selecciona la Distribución del Teclado",
+                    content: `
+                        <p>En el menú desplegable, elige la distribución que corresponde a tu teclado físico.</p>
+                        <p>Para la mayoría en Latinoamérica, la opción correcta es <strong>"Latinoamérica"</strong>. Si tu teclado tiene la 'Ñ' y el '@' en la tecla Q, es esa.</p>
+                        <p>El tutorial avanzará automáticamente cuando hagas tu selección.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top-left',
+                    triggerEvent: 'selectChanged', // AVANZA AL CAMBIAR EL SELECT
+                    nextStepAction: 'selectTeclado' // ID del select a observar
+                },
+                {
+                    id: 'paso_final_teclado',
+                    title: "¡Distribución Configurada!",
+                    content: `
+                        <p>¡Perfecto! Has configurado correctamente la distribución del teclado.</p>
+                        <p>Ya estás listo para el siguiente paso. Haz clic en el botón <strong>"Siguiente"</strong> de la ventana de instalación para continuar con el proceso.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed', // El tutorial finaliza aquí. El usuario es libre de avanzar.
+                    nextStepAction: null
+                }
+            ];
+
+            // Inicia el tutorial con los pasos definidos para esta página
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+            // Este listener observa el select del teclado y dispara el evento que el tutorialManager espera.
+
+            const selectTeclado = document.getElementById('selectTeclado');
+            if (selectTeclado) {
+                selectTeclado.addEventListener('change', () => {
+                    document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                        detail: {
+                            actionId: 'selectChanged',         // Coincide con `triggerEvent` del paso
+                            elementId: 'selectTeclado'         // Coincide con `nextStepAction` del paso
+                        }
+                    }));
+                });
+            }
+            
+            // NOTA: No necesitamos un listener para el botón "Siguiente" en ESTE tutorial, 
+            // ya que el último paso simplemente informa al usuario que debe hacer clic en él. 
+            // El tutorial termina al cerrar el último modal, dejando al usuario libre para navegar.
+
+        });
+    </script>
+</body>
+
+</html>

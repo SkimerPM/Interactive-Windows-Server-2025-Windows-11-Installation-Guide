@@ -1,0 +1,197 @@
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cantarell:ital,wght@0,400;0,700;1,400;1,700&family=Cascadia+Code:ital,wght@0,200..700;1,200..700&family=Open+Sans:wght@400;700&family=Bebas+Neue&display=swap');
+
+/* Configuración de toda la vidassdasdasdasd*/
+html, body {
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Variables de Colores - Paleta Profesional */
+:root {
+    /* Paleta Principal */
+    --primary: #3a86ff;      /* Azul vibrante para elementos principales */
+    --primary-light: #8cb8ff; /* Versión más clara del azul principal */
+    --secondary: #f0f4f8;    /* Gris azulado muy claro para fondos sutiles */
+    --accent: #4cc9f0;       /* Azul turquesa para acentos y highlights */
+    --accent2: #48bfe3;      /* Variación del azul turquesa para variedad */
+    
+    /* Tonos oscuros */
+    --dark: #1a1b25;         /* Casi negro con tono azulado */
+    --dark-blue: #2c3e50;    /* Azul oscuro para fondos y contraste */
+    --dark-alt: #343a40;     /* Gris oscuro azulado para variaciones */
+    
+    /* Tonos claros */
+    --light: #f8f9fa;        /* Blanco ligero */
+    --light-gray: #e9ecef;   /* Gris muy claro para fondos alternativos */
+    
+    /* Colores de acento adicionales */
+    --success: #38b000;      /* Verde para éxito */
+    --danger: #ef476f;       /* Rosa-rojizo para errores */
+    --warning: #ffd166;      /* Amarillo para advertencias */
+    
+    /* Estados de Hover */
+    --primary-hover: #1c6dd0; /* Versión más oscura del azul principal */
+    --accent-hover: #0bb5e0;  /* Turquesa más oscuro */
+    
+    /* Gradientes */
+    --gradient-dark: linear-gradient(135deg, var(--dark), var(--dark-blue));
+    --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+/* Estilos de Fondo */
+body {
+    background: var(--gradient-dark);
+    background-size: cover;
+    font-family: "Cantarell", sans-serif;
+    min-height: 100vh;
+    color: var(--light);
+    line-height: 1.6;
+}
+
+/* Tipografía */
+h1, h2, h3 {
+    font-family: "Cascadia Code", monospace;
+    letter-spacing: -0.03em;
+    margin-bottom: 1rem;
+}
+
+h1 {
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+}
+
+h2 {
+    font-size: clamp(1.6rem, 4vw, 2.5rem);
+    font-weight: 600;
+}
+
+h3 {
+    font-size: clamp(1.3rem, 3vw, 1.8rem);
+    font-weight: 600;
+}
+
+/* Enlaces */
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: all 0.3s ease-in-out;
+    position: relative;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* Formularios */
+select {
+    color: var(--dark);
+    background-color: var(--light);
+    border: 1px solid var(--light-gray);
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    font-family: inherit;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.08);
+}
+
+select:hover {
+    border-color: var(--primary);
+}
+
+select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(58, 134, 255, 0.2);
+}
+
+option {
+    color: var(--dark);
+    background-color: var(--light);
+    cursor: pointer;
+    padding: 8px;
+}
+
+/* Clases Utilitarias */
+.flex-row-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.btn { /*Usenlo psssss, en cada boton que crean*/
+    display: inline-block;
+    font-weight: 500;
+    border: none;
+    border-radius: 4px;
+    padding: 0.7rem 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-color: var(--primary);
+    color: var(--light);
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:hover {
+    background-color: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.btn:active {
+    transform: translateY(1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-outline {
+    background-color: transparent;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+}
+
+.btn-outline:hover {
+    background-color: var(--primary);
+    color: var(--light);
+}
+
+/* Scrollbar Personalizado (el que aparece a la derechita) */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: var(--primary-light);
+    border-radius: 10px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: var(--primary);
+}
+
+/* Firefox scrollbar (firefox no permitia lo de arriba y se usó eta vaina)*/
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-light) rgba(0, 0, 0, 0.1);
+}

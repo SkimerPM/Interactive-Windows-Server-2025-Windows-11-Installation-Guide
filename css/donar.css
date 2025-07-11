@@ -1,0 +1,336 @@
+:root {
+    /* Tus variables de color */
+    --primary: #3a86ff;
+    --primary-light: #8cb8ff;
+    --secondary: #f0f4f8;
+    --accent: #4cc9f0;
+    --accent2: #48bfe3;
+    --dark: #1a1b25;
+    --dark-blue: #2c3e50;
+    --dark-alt: #343a40;
+    --light: #f8f9fa;
+    --light-gray: #e9ecef;
+    --success: #38b000;
+    --danger: #ef476f;
+    --warning: #ffd166;
+    --primary-hover: #1c6dd0;
+    --gradient-dark: linear-gradient(135deg, var(--dark), var(--dark-blue));
+    --gradient-primary: linear-gradient(135deg, var(--primary), var(--accent));
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: var(--gradient-dark);
+    color: var(--light);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.donacion-container {
+    width: 100%;
+    max-width: 420px;
+}
+
+.donacion-card {
+    background: var(--dark);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+.donacion-view, .gracias-view {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.5s ease;
+}
+
+.gracias-view {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--dark);
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+}
+
+.gracias-view.active {
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+}
+
+.donacion-header {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.yape-logo {
+    height: 40px;
+    width: auto;
+}
+
+.donacion-header h2 {
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: var(--light);
+}
+
+.donacion-subtitle {
+    color: var(--light-gray);
+    font-size: 0.95rem;
+}
+
+.qr-section {
+    margin: 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.qr-container {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border-radius: 12px;
+    overflow: hidden;
+    background: white;
+    padding: 12px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.qr-code {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.qr-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(76, 201, 240, 0.1), rgba(58, 134, 255, 0.1));
+    animation: pulse 2s infinite;
+}
+
+.monto-sugerido {
+    margin-top: 1rem;
+    background: var(--dark-alt);
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+}
+
+.monto-sugerido span {
+    color: var(--accent);
+    font-weight: 600;
+}
+
+.donacion-info {
+    background: var(--dark-alt);
+    border-radius: 12px;
+    padding: 1.2rem;
+    margin: 1rem 0;
+}
+
+.info-line {
+    display: flex;
+    align-items: center;
+    margin-bottom: 12px;
+    font-size: 0.95rem;
+}
+
+.info-line:last-child {
+    margin-bottom: 0;
+}
+
+.info-line .icon {
+    margin-right: 10px;
+    font-size: 1.1rem;
+    color: var(--accent);
+}
+/* Estilos para copiar número */
+.numero-texto {
+    cursor: pointer;
+    transition: all 0.3s;
+    position: relative;
+    padding-right: 10px;
+}
+
+.numero-texto:hover {
+    color: var(--accent);
+}
+
+.copiado-feedback {
+    font-size: 0.8rem;
+    color: var(--accent);
+    opacity: 0;
+    transition: opacity 0.3s;
+    margin-left: 5px;
+}
+
+.numero-texto::after {
+    content: "📋";
+    margin-left: 5px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.numero-texto:hover::after {
+    opacity: 0.6;
+}
+
+.btn {
+    padding: 14px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border: none;
+    width: 100%;
+    text-align: center;
+}
+
+.btn-confirmar {
+    background: var(--primary);
+    color: white;
+    margin-top: 1.5rem;
+}
+
+.btn-confirmar:hover {
+    background: var(--primary-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(58, 134, 255, 0.3);
+}
+
+.btn-volver {
+    background: var(--dark-blue);
+    color: var(--light);
+    margin-top: 2rem;
+    max-width: 2000px;
+    justify-content: center;
+}
+
+.btn-volver:hover {
+    background: var(--dark);
+}
+/* Botón cerrar */
+.btn-cerrar {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    color: var(--light-gray);
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.btn-cerrar:hover {
+    color: var(--accent);
+}
+
+/* Botones notificación */
+.notificacion-botones {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin-top: 1.5rem;
+    width: 100%;
+}
+
+.btn-secundario {
+    background: var(--dark-alt);
+    color: var(--light);
+}
+
+.btn-secundario:hover {
+    background: var(--dark-blue);
+}
+.checkmark {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--success);
+    color: white;   
+    font-size: 3rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+    animation: checkmark 0.5s ease;
+}
+
+.mensaje-gracias {
+    color: var(--light-gray);
+    margin: 1rem 0 2rem;
+    max-width: 300px;
+}
+
+.detalle-donacion {
+    background: var(--dark-alt);
+    padding: 1rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 250px;
+}
+
+.detalle-donacion .monto {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--accent);
+    margin-top: 8px;
+}
+
+@keyframes pulse {
+    0% { opacity: 0.3; }
+    50% { opacity: 0.7; }
+    100% { opacity: 0.3; }
+}
+
+@keyframes checkmark {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Efecto de confeti */
+.confetti {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-image: url('https://cdn.jsdelivr.net/gh/habibmhamadi/confetti@main/confetti.svg');
+    background-size: cover;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}

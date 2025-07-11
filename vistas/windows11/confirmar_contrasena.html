@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/contrasena.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asignar Nombre al Dispositivo</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <img src="../../img/w11/cuenta.png" alt="imagen de cuenta" class="benefits-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content">
+                <h1 class="title">Confirmar contraseña</h1>
+                <p class="subtitle">Ingresa la contraseña una vez más</p>
+                
+                <div class="input-group">
+                    <label for="confirmPasswordInput">Confirmación de contraseña</label>
+                    <input type="password" id="confirmPasswordInput" placeholder="Confirmar contraseña" autocomplete="off">
+                </div>
+            </div>
+            <div class="footer">
+                <button class="btn-primary" id="nextButton" disabled>Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11confirmar_contrasena.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla de CONFIRMAR CONTRASEÑA
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_confirmar',
+                    title: "Confirmar tu Contraseña",
+                    content: `
+                        <p>¡Casi lo tenemos! Para asegurarnos de que no hubo ningún error al escribir, por favor, introduce tu contraseña una vez más.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_escribir_confirmacion',
+                    title: "Paso 1: Vuelve a Escribir la Contraseña",
+                    content: `
+                        <p>Escribe exactamente la misma contraseña en el campo de texto.</p>
+                        <p>El botón "Siguiente" solo se activará si ambas contraseñas coinciden a la perfección.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'inputValidated', // El trigger se activa cuando el botón "Siguiente" se habilita
+                    nextStepAction: 'confirmPasswordInput'
+                },
+                {
+                    id: 'paso_clic_siguiente',
+                    title: "¡Contraseña Confirmada!",
+                    content: `
+                        <p>¡Coincidencia perfecta! Ahora haz clic en <strong>"Siguiente"</strong> para guardar los cambios y finalizar la creación de la cuenta.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'nextButton' 
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+
+            const nextButton = document.getElementById('nextButton');
+
+            // 1. Listener para el botón "Siguiente"
+            if (nextButton) {
+                nextButton.addEventListener('click', () => {
+                    if (!nextButton.disabled) {
+                        // Notificamos al tutorial. Tu script W11confirmar_contrasena.js se encarga de la navegación.
+                        document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                            detail: { actionId: 'buttonClicked', elementId: 'nextButton' }
+                        }));
+                    }
+                });
+            }
+
+            // 2. Observador que vigila el botón "Siguiente" para saber cuándo las contraseñas coinciden
+            if (nextButton) {
+                const observer = new MutationObserver((mutationsList) => {
+                    for (const mutation of mutationsList) {
+                        if (mutation.type === 'attributes' && mutation.attributeName === 'disabled') {
+                            // Si el atributo 'disabled' ha sido quitado...
+                            if (!nextButton.disabled) {
+                                // Le avisamos al tutorial que la validación (en este caso, la coincidencia) fue exitosa.
+                                document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                                    detail: { actionId: 'inputValidated', elementId: 'confirmPasswordInput' }
+                                }));
+                                observer.disconnect(); // Dejamos de observar.
+                            }
+                        }
+                    }
+                });
+
+                // Configuramos al observador para que vigile los cambios en el botón
+                observer.observe(nextButton, { attributes: true });
+            }
+        });
+    </script>
+</body>
+
+</html>

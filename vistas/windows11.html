@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador de Instalación Windows 11</title>
+    <link rel="stylesheet" href="../css/windows11.css">
+</head>
+<body>
+    <div class="simulador-container">
+        <div class="title-bar">
+            <h1>Instalación de Windows 11</h1>
+        </div>
+        
+        <div class="simulador-content">
+            <!-- Paso 1: Bienvenida -->
+            <div class="step active welcome-step" id="step1">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Windows_11_logo.svg/1200px-Windows_11_logo.svg.png" alt="Windows 11 Logo">
+                <h2>Bienvenido a la instalación de Windows 11</h2>
+                <p>Este asistente te guiará a través del proceso de instalación.</p>
+            </div>
+            
+            <!-- Paso 2: Selección de idioma -->
+            <div class="step" id="step2">
+                <h2>Selecciona tu idioma y configuración regional</h2>
+                <p>Elige las preferencias adecuadas para tu región:</p>
+                
+                <div class="form-group">
+                    <label for="language">Idioma:</label>
+                    <select id="language">
+                        <option value="es">Español (España)</option>
+                        <option value="es-mx">Español (México)</option>
+                        <option value="en">English</option>
+                    </select>
+                </div>
+            </div>
+            
+            <!-- Paso 3: Tipo de instalación -->
+            <div class="step" id="step3">
+                <h2>Tipo de instalación</h2>
+                <p>Selecciona el tipo de instalación que deseas realizar:</p>
+                
+                <div class="install-options">
+                    <div class="install-option" data-type="upgrade">
+                        <h3>Actualizar</h3>
+                        <p>Mantener archivos, aplicaciones y configuraciones</p>
+                    </div>
+                    <div class="install-option" data-type="custom">
+                        <h3>Personalizada</h3>
+                        <p>Instalar solo Windows (avanzado)</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Paso 4: Instalación en progreso -->
+            <div class="step" id="step4">
+                <h2>Instalando Windows 11</h2>
+                <p>Por favor espera mientras se instala Windows. Esto puede tomar varios minutos.</p>
+                
+                <div class="progress-container">
+                    <div class="progress-bar" id="progress-bar"></div>
+                </div>
+                
+                <div id="install-status">Preparando archivos...</div>
+            </div>
+            
+            <!-- Paso 5: Finalización -->
+            <div class="step" id="step5">
+                <div class="welcome-step">
+                    <h2>¡Instalación completada!</h2>
+                    <p>Windows 11 se ha instalado correctamente en tu equipo.</p>
+                    <p>El equipo se reiniciará automáticamente en <span id="countdown">10</span> segundos.</p>
+                </div>
+            </div>
+            
+            <!-- Barra de botones -->
+            <div class="button-bar">
+                <button class="btn btn-secondary" id="btn-back">Atrás</button>
+                <button class="btn btn-primary" id="btn-next">Siguiente</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../JS/windows11.js"></script>
+</body>
+</html>

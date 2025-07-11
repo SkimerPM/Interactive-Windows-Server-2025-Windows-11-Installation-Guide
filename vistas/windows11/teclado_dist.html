@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/teclado_dist.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instalacion Windows 11</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <div class="back-arrow" id="backButton" title="Atrás">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="19" y1="12" x2="5" y2="12"></line>
+                    <polyline points="12 19 5 12 12 5"></polyline>
+                </svg>
+            </div>
+            <img src="../../img/w11/teclado_dist.png" alt="Instalación de Windows" class="teclado-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content">
+                <h1 class="title">¿Es esta la distribución del teclado o el método de entrada adecuado?</h1>
+                <p class="subtitle">Si usas otra distribución del teclado, puedes agregarla a continuación.</p>
+                
+                <div class="country-list">
+                    <button class="country-option selected" data-country="espanol">Español</button>
+                    <button class="country-option" data-country="latam">Latinoamérica</button>
+                    <button class="country-option" data-country="v-espanol">Variación del español</button>
+                    <button class="country-option" data-country="alemania">Alemania</button>
+                    <button class="country-option" data-country="andorra">Andorra</button>
+                    <button class="country-option" data-country="angola">Angola</button>
+                    <button class="country-option" data-country="anguila">Anguila</button>
+                    <button class="country-option" data-country="antigua">Antigua y Barbuda</button>
+                    <button class="country-option" data-country="antillas">Antillas Neerlandesas</button>
+                    <button class="country-option" data-country="arabia">Arabia Saudí</button>
+                    <button class="country-option" data-country="argelia">Argelia</button>
+                    <button class="country-option" data-country="argentina">Argentina</button>
+                    <button class="country-option" data-country="armenia">Armenia</button>
+                    <button class="country-option" data-country="aruba">Aruba</button>
+                    <button class="country-option" data-country="australia">Australia</button>
+                    <button class="country-option" data-country="austria">Austria</button>
+                    <button class="country-option" data-country="azerbaiyan">Azerbaiyán</button>
+                    <button class="country-option" data-country="bahamas">Bahamas</button>
+                    <button class="country-option" data-country="bahrein">Bahrein</button>
+                    <button class="country-option" data-country="bangladesh">Bangladesh</button>
+                    <button class="country-option" data-country="barbados">Barbados</button>
+                    <button class="country-option" data-country="belarus">Belarús</button>
+                    <button class="country-option" data-country="belgica">Bélgica</button>
+                    <button class="country-option" data-country="belice">Belice</button>
+                    <button class="country-option" data-country="benin">Benín</button>
+                    <button class="country-option" data-country="bermudas">Bermudas</button>
+                    <button class="country-option" data-country="bolivia">Bolivia</button>
+                    <button class="country-option" data-country="bosnia">Bosnia y Herzegovina</button>
+                    <button class="country-option" data-country="botswana">Botswana</button>
+                    <button class="country-option" data-country="brasil">Brasil</button>
+                    <button class="country-option" data-country="brunei">Brunéi</button>
+                    <button class="country-option" data-country="bulgaria">Bulgaria</button>
+                    <button class="country-option" data-country="burkina">Burkina Faso</button>
+                    <button class="country-option" data-country="burundi">Burundi</button>
+                    <button class="country-option" data-country="butan">Bután</button>
+                    <button class="country-option" data-country="cabo_verde">Cabo Verde</button>
+                    <button class="country-option" data-country="camboya">Camboya</button>
+                    <button class="country-option" data-country="camerun">Camerún</button>
+                    <button class="country-option" data-country="canada">Canadá</button>
+                    <button class="country-option" data-country="catar">Catar</button>
+                    <button class="country-option" data-country="chad">Chad</button>
+                    <button class="country-option" data-country="chile">Chile</button>
+                    <button class="country-option" data-country="china">China</button>
+                    <button class="country-option" data-country="chipre">Chipre</button>
+                    <button class="country-option" data-country="colombia">Colombia</button>
+                    <button class="country-option" data-country="comoras">Comoras</button>
+                    <button class="country-option" data-country="congo">Congo</button>
+                    <button class="country-option" data-country="corea_norte">Corea del Norte</button>
+                    <button class="country-option" data-country="corea_sur">Corea del Sur</button>
+                    <button class="country-option" data-country="costa_rica">Costa Rica</button>
+                    <button class="country-option" data-country="croacia">Croacia</button>
+                    <button class="country-option" data-country="cuba">Cuba</button>
+                    <button class="country-option" data-country="dinamarca">Dinamarca</button>
+                    <button class="country-option" data-country="dominica">Dominica</button>
+                    <button class="country-option" data-country="ecuador">Ecuador</button>
+                    <button class="country-option" data-country="egipto">Egipto</button>
+                    <button class="country-option" data-country="el_salvador">El Salvador</button>
+                    <button class="country-option" data-country="eslovaquia">Eslovaquia</button>
+                    <button class="country-option" data-country="eslovenia">Eslovenia</button>
+                    <button class="country-option" data-country="estados_unidos">Estados Unidos</button>
+                    <button class="country-option" data-country="estonia">Estonia</button>
+                    <button class="country-option" data-country="etiopia">Etiopía</button>
+                    <button class="country-option" data-country="filipinas">Filipinas</button>
+                    <button class="country-option" data-country="finlandia">Finlandia</button>
+                    <button class="country-option" data-country="francia">Francia</button>
+                    <button class="country-option" data-country="gabon">Gabón</button>
+                    <button class="country-option" data-country="gambia">Gambia</button>
+                    <button class="country-option" data-country="georgia">Georgia</button>
+                    <button class="country-option" data-country="ghana">Ghana</button>
+                    <button class="country-option" data-country="gibraltar">Gibraltar</button>
+                    <button class="country-option" data-country="granada">Granada</button>
+                    <button class="country-option" data-country="grecia">Grecia</button>
+                    <button class="country-option" data-country="groenlandia">Groenlandia</button>
+                    <button class="country-option" data-country="guatemala">Guatemala</button>
+                    <button class="country-option" data-country="guinea">Guinea</button>
+                    <button class="country-option" data-country="guyana">Guyana</button>
+                    <button class="country-option" data-country="haiti">Haití</button>
+                    <button class="country-option" data-country="honduras">Honduras</button>
+                    <button class="country-option" data-country="hungria">Hungría</button>
+                    <button class="country-option" data-country="india">India</button>
+                    <button class="country-option" data-country="indonesia">Indonesia</button>
+                    <button class="country-option" data-country="iran">Irán</button>
+                    <button class="country-option" data-country="iraq">Iraq</button>
+                    <button class="country-option" data-country="irlanda">Irlanda</button>
+                    <button class="country-option" data-country="islandia">Islandia</button>
+                    <button class="country-option" data-country="israel">Israel</button>
+                    <button class="country-option" data-country="italia">Italia</button>
+                    <button class="country-option" data-country="jamaica">Jamaica</button>
+                    <button class="country-option" data-country="japon">Japón</button>
+                    <button class="country-option" data-country="jordania">Jordania</button>
+                    <button class="country-option" data-country="kazajistan">Kazajistán</button>
+                    <button class="country-option" data-country="kenia">Kenia</button>
+                    <button class="country-option" data-country="kirguistan">Kirguistán</button>
+                    <button class="country-option" data-country="kuwait">Kuwait</button>
+                    <button class="country-option" data-country="laos">Laos</button>
+                    <button class="country-option" data-country="letonia">Letonia</button>
+                    <button class="country-option" data-country="libano">Líbano</button>
+                    <button class="country-option" data-country="liberia">Liberia</button>
+                    <button class="country-option" data-country="libia">Libia</button>
+                    <button class="country-option" data-country="liechtenstein">Liechtenstein</button>
+                    <button class="country-option" data-country="lituania">Lituania</button>
+                    <button class="country-option" data-country="luxemburgo">Luxemburgo</button>
+                    <button class="country-option" data-country="macedonia">Macedonia</button>
+                    <button class="country-option" data-country="madagascar">Madagascar</button>
+                    <button class="country-option" data-country="malasia">Malasia</button>
+                    <button class="country-option" data-country="maldivas">Maldivas</button>
+                    <button class="country-option" data-country="mali">Malí</button>
+                    <button class="country-option" data-country="malta">Malta</button>
+                    <button class="country-option" data-country="marruecos">Marruecos</button>
+                    <button class="country-option" data-country="mauricio">Mauricio</button>
+                    <button class="country-option" data-country="mauritania">Mauritania</button>
+                    <button class="country-option" data-country="mexico">México</button>
+                    <button class="country-option" data-country="moldova">Moldavia</button>
+                    <button class="country-option" data-country="monaco">Mónaco</button>
+                    <button class="country-option" data-country="mongolia">Mongolia</button>
+                    <button class="country-option" data-country="montenegro">Montenegro</button>
+                    <button class="country-option" data-country="mozambique">Mozambique</button>
+                    <button class="country-option" data-country="namibia">Namibia</button>
+                    <button class="country-option" data-country="nepal">Nepal</button>
+                    <button class="country-option" data-country="nicaragua">Nicaragua</button>
+                    <button class="country-option" data-country="niger">Níger</button>
+                    <button class="country-option" data-country="nigeria">Nigeria</button>
+                    <button class="country-option" data-country="noruega">Noruega</button>
+                    <button class="country-option" data-country="nueva_zelanda">Nueva Zelanda</button>
+                    <button class="country-option" data-country="oman">Omán</button>
+                    <button class="country-option" data-country="paises_bajos">Países Bajos</button>
+                    <button class="country-option" data-country="pakistan">Pakistán</button>
+                    <button class="country-option" data-country="panama">Panamá</button>
+                    <button class="country-option" data-country="paraguay">Paraguay</button>
+                    <button class="country-option" data-country="peru">Perú</button>
+                    <button class="country-option" data-country="polonia">Polonia</button>
+                    <button class="country-option" data-country="portugal">Portugal</button>
+                    <button class="country-option" data-country="puerto_rico">Puerto Rico</button>
+                    <button class="country-option" data-country="reino_unido">Reino Unido</button>
+                    <button class="country-option" data-country="republica_checa">República Checa</button>
+                    <button class="country-option" data-country="republica_dominicana">República Dominicana</button>
+                    <button class="country-option" data-country="rumania">Rumania</button>
+                    <button class="country-option" data-country="rusia">Rusia</button>
+                    <button class="country-option" data-country="rwanda">Ruanda</button>
+                    <button class="country-option" data-country="senegal">Senegal</button>
+                    <button class="country-option" data-country="serbia">Serbia</button>
+                    <button class="country-option" data-country="singapur">Singapur</button>
+                    <button class="country-option" data-country="siria">Siria</button>
+                    <button class="country-option" data-country="sri_lanka">Sri Lanka</button>
+                    <button class="country-option" data-country="sudafrica">Sudáfrica</button>
+                    <button class="country-option" data-country="sudan">Sudán</button>
+                    <button class="country-option" data-country="suecia">Suecia</button>
+                    <button class="country-option" data-country="suiza">Suiza</button>
+                    <button class="country-option" data-country="tailandia">Tailandia</button>
+                    <button class="country-option" data-country="taiwan">Taiwán</button>
+                    <button class="country-option" data-country="tanzania">Tanzania</button>
+                    <button class="country-option" data-country="tunez">Túnez</button>
+                    <button class="country-option" data-country="turquia">Turquía</button>
+                    <button class="country-option" data-country="ucrania">Ucrania</button>
+                    <button class="country-option" data-country="uganda">Uganda</button>
+                    <button class="country-option" data-country="uruguay">Uruguay</button>
+                    <button class="country-option" data-country="uzbekistan">Uzbekistán</button>
+                    <button class="country-option" data-country="venezuela">Venezuela</button>
+                    <button class="country-option" data-country="vietnam">Vietnam</button>
+                    <button class="country-option" data-country="yemen">Yemen</button>
+                    <button class="country-option" data-country="zambia">Zambia</button>
+                    <button class="country-option" data-country="zimbabwe">Zimbabue</button>
+                </div>
+            </div>
+            
+            <div class="footer">
+                <button class="btn-yes" id="btnSi" onclick="confirmSelection()">Sí</button>
+            </div>
+        </div>
+
+        <!-- Loading Screen - Same style as original -->
+        <div class="loading-screen" id="loadingScreen">
+                <div class="loading-left-panel">
+                    <img src="../../img/w11/teclado_dist.png" alt="Cargando" class="teclado-image">
+                </div>
+                <div class="loading-right-panel">
+                    <div class="loading-spinner"></div>
+                </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11teclado.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // Define los pasos para la pantalla de DISTRIBUCIÓN DE TECLADO
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_teclado',
+                    title: "Configuración del Teclado",
+                    content: `
+                        <p>¡Hola de nuevo! Ahora vamos a configurar la distribución de tu teclado.</p>
+                        <p>Esto asegura que las teclas que presionas coincidan con los caracteres que aparecen en pantalla (por ejemplo, la tecla Ñ, los acentos, etc.).</p>
+                        <p>Cierra este mensaje para continuar.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_seleccionar_distribucion',
+                    title: "Paso 1: Elige una Distribución",
+                    content: `
+                        <p>La opción "Español" ya viene seleccionada, lo cual es perfecto para la mayoría de los teclados en español.</p>
+                        <p>Si lo deseas, puedes hacer clic en otra opción. El tutorial avanzará en cuanto hagas clic en <strong>cualquier distribución</strong>.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+                    modalAlignment: 'bottom-right',
+                    triggerEvent: 'layoutSelected', // Usaremos un evento genérico
+                    nextStepAction: 'anyLayout'      // con un ID de acción genérico
+                },
+                {
+                    id: 'paso_confirmar_teclado',
+                    title: "Paso 2: Confirma tu Elección",
+                    content: `
+                        <p>¡Perfecto! Ya has elegido la distribución.</p>
+                        <p>Ahora, para confirmar, haz clic en el botón <strong>"Sí"</strong>.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'top-right',
+                    triggerEvent: 'buttonClicked',
+                    nextStepAction: 'btnSi' // El ID del botón "Sí"
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+            // --- LISTENERS PARA DISPARAR EVENTOS PERSONALIZADOS ---
+
+            // 1. Listener para TODOS los botones de distribución de teclado
+            // Usamos la clase '.country-option' que ya tienen tus botones
+            const layoutButtons = document.querySelectorAll('.country-option');
+            layoutButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    // Cualquier botón que se presione, dispara el mismo evento genérico
+                    document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                        detail: {
+                            actionId: 'layoutSelected', // El evento que el tutorial espera
+                            elementId: 'anyLayout'       // El ID genérico que el tutorial espera
+                        }
+                    }));
+                });
+            });
+
+            // 2. Listener para el botón "Sí"
+            const yesButton = document.getElementById('btnSi');
+            if (yesButton) {
+                yesButton.addEventListener('click', () => {
+                    document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                        detail: {
+                            actionId: 'buttonClicked',
+                            elementId: 'btnSi'
+                        }
+                    }));
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,302 @@
+/* Estilos generales del Overlay (la capa oscura de fondo) */
+.modal-overlay {
+    position: fixed; /* Fija el overlay a la ventana de visualización */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fondo semitransparente oscuro */
+    display: flex; /* Habilita Flexbox para posicionar el modal-container */
+    z-index: 1000; /* Asegura que esté por encima de otros elementos */
+
+    /* Las propiedades justify-content y align-items se definirán
+       dinámicamente por las clases 'modal-align-...' */
+}
+
+/* Clases para posicionar TODO el modal (el .modal-container) dentro del overlay */
+/* Controlan cómo el Flexbox del .modal-overlay alinea a su hijo (.modal-container) */
+
+/* 1. Posiciones Principales */
+.modal-align-center {
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center;     /* Centra verticalmente */
+}
+
+.modal-align-left {
+    justify-content: flex-start; /* Alinea a la izquierda */
+    align-items: center;
+    /* QUITAMOS padding-left aquí */
+}
+
+.modal-align-right {
+    justify-content: flex-end; /* Alinea a la derecha */
+    align-items: center;
+    /* QUITAMOS padding-right aquí */
+}
+
+.modal-align-top {
+    justify-content: center; /* Centra horizontalmente */
+    align-items: flex-start; /* Alinea arriba */
+    /* QUITAMOS padding-top aquí */
+}
+
+.modal-align-bottom {
+    justify-content: center; /* Centra horizontalmente */
+    align-items: flex-end; /* Alinea abajo */
+    /* QUITAMOS padding-bottom aquí */
+}
+
+/* 2. Posiciones en Esquinas */
+.modal-align-top-left {
+    justify-content: flex-start; /* Izquierda */
+    align-items: flex-start; /* Arriba */
+    /* QUITAMOS padding aquí */
+}
+
+.modal-align-top-right {
+    justify-content: flex-end; /* Derecha */
+    align-items: flex-start; /* Arriba */
+    /* QUITAMOS padding aquí */
+}
+
+.modal-align-bottom-left {
+    justify-content: flex-start; /* Izquierda */
+    align-items: flex-end; /* Abajo */
+    /* QUITAMOS padding aquí */
+}
+
+.modal-align-bottom-right {
+    justify-content: flex-end; /* Derecha */
+    align-items: flex-end; /* Abajo */
+    /* QUITAMOS padding aquí */
+}
+
+/* --- REGLAS PARA DAR EL ESPACIO AL MODAL (margin de 40px) --- */
+.modal-align-left .modal-container {
+    margin-left: 40px; /* Margen a la izquierda del modal */
+}
+
+.modal-align-right .modal-container {
+    margin-right: 40px; /* Margen a la derecha del modal */
+}
+
+.modal-align-top .modal-container {
+    margin-top: 40px; /* Margen superior del modal */
+}
+
+.modal-align-bottom .modal-container {
+    margin-bottom: 40px; /* Margen inferior del modal */
+}
+
+/* Para las esquinas, combinamos márgenes */
+.modal-align-top-left .modal-container {
+    margin-top: 40px;
+    margin-left: 40px;
+}
+.modal-align-top-right .modal-container {
+    margin-top: 40px;
+    margin-right: 40px;
+}
+.modal-align-bottom-left .modal-container {
+    margin-bottom: 40px;
+    margin-left: 40px;
+}
+.modal-align-bottom-right .modal-container {
+    margin-bottom: 40px;
+    margin-right: 40px;
+}
+/* --- FIN DE LAS REGLAS AÑADIDAS --- */
+
+
+/* Estilos del Contenedor Principal del Modal */
+.modal-container {
+    user-select: none; /* Evita que el usuario pueda seleccionar texto */
+    background-color: white;
+    padding: 15px 0 15px 0; /* Padding interno del modal */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 350px; /* Ancho fijo para el modal */
+    max-width: 500px; /* Ancho máximo para el modal */
+    position: relative; /* Crucial para posicionar el presentador absolutamente dentro de él */
+    animation: fadeIn 1s ease-in-out; /* Animación de entrada del modal */
+    display: flex; /* Habilita Flexbox para la estructura interna */
+    flex-direction: column; /* Organiza los hijos (header, body) verticalmente */
+}
+
+/* Animación de entrada para el modal */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(40px); /* Viene desde abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0); /* Llega a su posición final */
+    }
+}
+
+/* Estilos del Encabezado del Modal */
+.modal-header {
+    display: flex;
+    justify-content: space-between; /* Espacio entre título y botón de cerrar */
+    align-items: center; /* Alinea verticalmente los ítems en el centro */
+}
+
+/* Estilos del Título del Modal */
+.modal-title {
+    font-size: 1em;
+    width: 80%; /* Ancho del título dentro del header */
+    margin: 1.7em auto 0.5em auto; /* Margen superior, horizontal centrado, margen inferior */
+    color: #012123;
+    text-align: center; /* Alinea el texto del título al centro */
+}
+
+/* Estilos del Botón de Cerrar del Modal */
+.modal-close-button {
+    cursor: pointer;
+    position: absolute; /* Posicionamiento absoluto respecto al .modal-container */
+    top: 10px;
+    right: 20px;
+    font-size: 1.6em;
+    color: #05686d;
+}
+
+.modal-close-button:hover {
+    color: #05a2aa;
+}
+
+/* Estilos del Cuerpo del Modal (donde va el presentador y el contenido principal) */
+.modal-body {
+    width: 80%; /* Ancho del cuerpo del modal */
+    margin: 0 auto; /* Centra el cuerpo del modal horizontalmente */
+    display: flex; /* Habilita Flexbox para el presentador y el contenido */
+    align-items: center; /* Alinea los ítems verticalmente al centro por defecto */
+    justify-content: center; /* Alinea los ítems horizontalmente al centro por defecto */
+    gap: 20px; /* Espacio entre el presentador y el contenido */
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 12px;
+}
+
+/* Estilos del Contenedor del Presentador */
+.modal-presenter {
+    flex-shrink: 0; /* Evita que el presentador se encoja */
+    display: flex;
+    align-items: flex-start; /* Alinea la imagen del presentador con la parte superior de su contenedor */
+    position: absolute; /* ¡Importante! Para posicionarlo independientemente del flujo del modal-body */
+    z-index: 1001; /* Asegura que el presentador esté por encima del contenido del modal */
+    /* La transición de transform debe ir aquí para cubrir todas las transformaciones */
+    transition: transform .3s ease-in-out; /* Transición para suavizar el volteo y la flotación si se combinan */
+}
+/* Estilos de la Imagen del Presentador */
+.modal-presenter-img {
+    width: 100px; /* Tamaño deseado de tu personaje */
+    height: auto; /* Mantiene la proporción de la imagen */
+    display: block;
+    object-fit: contain; /* Asegura que la imagen se ajuste sin recortarse si el contenedor la limita */
+    animation: float 3s ease-in-out infinite; /* Animación de flotación */
+    /* La transición para el hover (zoom) puede ir aquí, si solo afecta a la imagen */
+}
+
+/* Animación de flotación para el presentador */
+@keyframes float {
+    0% {
+        transform: translateY(0px);
+    }
+    50% {
+        transform: translateY(-10px); /* Se mueve 10px hacia arriba */
+    }
+    100% {
+        transform: translateY(0px); /* Vuelve a la posición original */
+    }
+}
+
+/* Clases para las POSICIONES del Presentador (relativas al .modal-container) */
+/* Ajusta los valores top/bottom/left/right según el tamaño de tu imagen y el efecto deseado */
+/* Mantengo los -30px / -56px / -50px que tenías para que sobresalga un poco */
+
+/* Posiciones Izquierdas - Sin volteo (mirando a la derecha por defecto) */
+.presenter-top-left { top: -30px; left: -56px; }
+.presenter-bottom-left { bottom: -30px; left: -56px; }
+.presenter-center-left {
+    left: -50px; /* Se mantiene fuera, a la izquierda */
+    top: 60%; /* Centra verticalmente */
+    transform: translateY(-50%); /* Ajuste para centrado vertical perfecto */
+}
+
+/* Posiciones Derechas - CON VOLTEO HORIZONTAL (mirando a la izquierda) */
+.presenter-top-right {
+    top: -30px;
+    right: -56px;
+    transform: scaleX(-1); /* Voltea la imagen horizontalmente */
+}
+.presenter-bottom-right {
+    bottom: -30px;
+    right: -56px;
+    transform: scaleX(-1); /* Voltea la imagen horizontalmente */
+}
+.presenter-center-right {
+    right: -50px; /* Se mantiene fuera, a la derecha */
+    top: 60%; /* Centra verticalmente */
+    transform: translateY(-50%) scaleX(-1); /* Combina centrado vertical y volteo */
+}
+
+.presenter-center-bottom {
+    bottom: -80px; /* Se mantiene fuera, abajo */
+    left: 50%; /* Centra horizontalmente */
+    transform: translateX(-50%); /* Ajuste para centrado horizontal perfecto */
+}
+/* --- FIN NUEVAS POSICIONES CENTRADAS --- */
+
+/* Estilos del Contenido Principal del Modal */
+.modal-content {
+    flex-grow: 1; /* Permite que el contenido ocupe el espacio restante en .modal-body */
+    line-height: 1.6;
+    overflow-y: auto; /* Habilita el scroll vertical si el contenido es muy largo */
+    max-height: 155px; /* Altura máxima antes de que aparezca el scroll */
+    padding-right: 6px; /* Pequeño padding para no pegar al scrollbar */
+}
+.modal-content h3 {
+    font-size: 1.2em;
+    font-weight: 400;
+}
+.modal-content p {
+    color: #4b4b4b;
+    font-weight: 400;
+    font-size: 1em;
+}
+
+
+/* Estilos del Scrollbar (solo para navegadores Webkit como Chrome, Safari) */
+.modal-content::-webkit-scrollbar {
+    width: 6px; /* Ancho del scrollbar */
+}
+.modal-content::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Fondo del track */
+    border-radius: 10px;
+}
+.modal-content::-webkit-scrollbar-thumb {
+    background: #888; /* Color del thumb (la parte que se mueve) */
+    border-radius: 10px;
+}
+.modal-content::-webkit-scrollbar-thumb:hover {
+    background: #555; /* Color del thumb al pasar el ratón */
+}
+
+/* Estilos para los Botones (fuera del modal, para abrirlo) */
+button {
+    font-weight: 400;
+    color: #ecefef;
+    padding: 5px 10px;
+    font-size: .8em;
+    cursor: pointer;
+    background-color:#2f3032fa;
+    border: 1px solid #000d0e;
+    min-width: 60px;
+    width: fit-content;
+    margin: 20px; /* Agregado para que no estén tan juntos en el ejemplo */
+}
+button:hover {
+    background-color: #484848fa;
+    color: #ffffff;
+}

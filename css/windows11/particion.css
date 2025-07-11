@@ -1,0 +1,182 @@
+body {
+    font-size: 12px;
+    flex-direction: column-reverse;
+}
+
+.flex{
+    display: flex;
+}
+
+.flex-item-center{
+    justify-content: center;
+}
+
+.flex-content-b{
+    justify-content: space-between;
+}
+
+h1{
+    font-weight: normal;
+    color: #3C78B7;
+    margin-bottom: 1rem;
+}
+.btn-window{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    text-align: center;
+    background: linear-gradient(to top, #dae6f3, #c3cdd9);
+    border: 1px solid #858585;
+    padding: 1px 10px;
+    margin: 2px;
+    cursor: pointer;
+    border-radius: 4px;
+    color: white;
+    text-shadow: 0 0 3px #585757;
+}
+.btn-window {
+    width: 100%;
+
+}
+
+
+
+.btn-window.rojo{
+    background: linear-gradient(to top, rgb(243, 177, 165), rgb(187, 71, 47));
+}
+
+.opcion-grupo{
+    display: flex;
+}
+
+.flex-center{
+    display: flex;
+
+    align-items: center;
+    gap: 4px;
+}
+
+.opciones{
+    margin: 30px 0;
+}
+
+.opcion-grupo {
+    margin-bottom: 10px;
+}
+.opciones .opcion-grupo div{
+    width: 140px;
+
+}
+.icon{
+    margin-top: 3px;
+    width: 10px;
+}
+
+.opcion-grupo a{
+    color: #3C78B7;
+}
+.opcion-grupo a{
+    font-weight: 300;
+}
+.gris{
+    text-decoration: none;
+    color: #96989b !important;
+    cursor: auto;
+}
+
+
+
+
+/* apply-cancel-bar */
+/* .apply-cancel-bar{
+  
+} */
+
+table{
+    width: 100%;
+    border: 1px solid #868484;
+}
+
+tr th{
+    text-align: start;
+    font-weight: 600;
+}
+
+
+
+tr:hover{
+    background-color: #bec8d26e;
+
+}
+
+@keyframes fade {
+    from {
+        opacity: 0;
+        transform: scaleY(-3px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scaleY(0);
+    }
+}
+
+.fila-seleccionada {
+    background-color: #3C78B7;
+    cursor: pointer;
+    color: white;
+}
+.fila-seleccionada:hover{
+    background-color: #3C78B7;
+    cursor: pointer;
+    color: white;
+}
+
+.none{
+    display: none;
+}
+.visible{
+    display: block;
+}
+.visibleTabla{
+    display: table-row;
+}
+
+#apply-cancel-bar{
+    margin: .4rem 0;
+}
+#apply-cancel-bar input{
+    margin: 0 4px;
+    outline: none;
+}
+
+
+.error-card
+{
+    position: absolute;
+    transform:translateY(0);
+    z-index: -1;
+    opacity: 1;
+    padding: 1rem 1.3rem;
+    color: #cbd9e9;
+    background:linear-gradient(to left, #49545b, #292b2c) ;
+    text-align: center;
+    transition: all .3s linear;   
+}
+
+.activo{
+    opacity: 1;
+    transform: translateY(-40vh);
+}
+
+
+@media (max-width: 400px) {
+    .activo{
+        z-index: 1;
+    }
+}
+
+.btn:hover{
+    color: black;
+}

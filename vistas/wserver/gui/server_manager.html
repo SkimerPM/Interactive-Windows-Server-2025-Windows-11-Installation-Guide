@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador del servidor</title>
+    <link rel="stylesheet" href="../../../css/wserver/gui/server_manager.css">
+</head>
+<body>
+    <div class="window">
+        <!-- Title Bar -->
+        <div class="title-bar">
+            <div class="title-text">
+                📊 Administrador del servidor
+            </div>
+            <div class="window-controls">
+                <div class="control-btn">-</div>
+                <div class="control-btn">□</div>
+                <div class="control-btn">✕</div>
+            </div>
+        </div>
+
+        <!-- Menu Bar -->
+        <div class="menu-bar">
+            <div class="menu-item">Archivo</div>
+            <div class="menu-item">Ver</div>
+            <div class="menu-item">Herramientas</div>
+            <div class="menu-item">Administrar</div>
+            <div class="menu-item">Ayuda</div>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="nav-buttons">
+                <div class="nav-btn">◀</div>
+                <div class="nav-btn">▶</div>
+            </div>
+            <div class="toolbar-text">Panel</div>
+            <div class="toolbar-right">
+                <span>🔍 |</span>
+                <span>Administrador</span>
+                <span>Herramientas</span>
+                <span>Ver</span>
+                <span>Ayuda</span>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="sidebar-item active">
+                    <div class="sidebar-icon"></div>
+                    <span>Panel</span>
+                </div>
+                <div class="sidebar-item">
+                    <div class="sidebar-icon"></div>
+                    <span>Servidor local</span>
+                </div>
+                <div class="sidebar-item">
+                    <div class="sidebar-icon"></div>
+                    <span>Todos los servidores</span>
+                </div>
+                <div class="sidebar-item">
+                    <div class="sidebar-icon"></div>
+                    <span>Servicios de archivos y...</span>
+                </div>
+            </div>
+
+            <!-- Content Area -->
+            <div class="content-area">
+                <div class="content-header">Administrador del Servidor</div>
+                
+                <!-- Welcome Panel -->
+                <div class="welcome-panel">
+                    <div class="welcome-header">
+                        <div class="welcome-number">!</div>
+                        <div class="welcome-text">Configurar este servidor local</div>
+                        <button class="hide-button">Ocultar</button>
+                    </div>
+                    <div class="welcome-steps">
+                        <div class="step-item">
+                            <div class="step-number">2.</div>
+                            <a href="#" class="step-text">Agregar roles y características</a>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3.</div>
+                            <a href="#" class="step-text">Agregar otros servidores para administrar</a>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">4.</div>
+                            <a href="#" class="step-text">Crear un grupo de servidores</a>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">5.</div>
+                            <a href="#" class="step-text">Conectar este servidor a servicios de nube</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Server Groups Section -->
+                <div class="server-groups">
+                    <div class="groups-header">Grupos de Servidores y Roles</div>
+                    <div class="groups-info">Roles: 1 | Grupos de servidores: 1 | Servidores en total: 1</div>
+                    
+                    <div class="server-tiles">
+                        <div class="server-tile">
+                            <div class="tile-icon"></div>
+                            <div class="tile-content">
+                                <div class="tile-title">Servicios de archivos y de almacenamiento</div>
+                            </div>
+                        </div>
+                        <div class="server-tile red">
+                            <div class="tile-icon"></div>
+                            <div class="tile-content">
+                                <div class="tile-title">Servidor local</div>
+                            </div>
+                            <div class="tile-count">1</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Quick Start Sidebar -->
+            <div class="quick-start">
+                <div class="quick-section">
+                    <div class="quick-header">Inicio Rápido</div>
+                    <div class="quick-content">
+                        Configurar este servidor local
+                    </div>
+                </div>
+                <div class="quick-section">
+                    <div class="quick-header news">Novedades</div>
+                    <div class="quick-content">
+                        Consulte las novedades de Windows Server 2016
+                    </div>
+                </div>
+                <div class="quick-section">
+                    <div class="quick-header info">Obtener más información</div>
+                    <div class="quick-content">
+                        Aprenda más sobre las características y roles de Windows Server
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para cerrar la ventana del Administrador del Servidor
+        function closeServerManager() {
+            const serverWindow = document.querySelector('.window');
+            if (serverWindow) {
+                serverWindow.style.display = 'none';
+                // Si hay una función parent para notificar al padre, la llamamos
+                if (window.parent && window.parent.closeServerManager) {
+                    window.parent.closeServerManager();
+                }
+            }
+        }
+
+        // Add interactive functionality
+        document.querySelectorAll('.sidebar-item').forEach(item => {
+            item.addEventListener('click', function() {
+                document.querySelectorAll('.sidebar-item').forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+            });
+        });
+
+        document.querySelectorAll('.step-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.backgroundColor = '#f0f8ff';
+                setTimeout(() => {
+                    this.style.backgroundColor = '';
+                }, 200);
+            });
+        });
+
+        document.querySelectorAll('.server-tile').forEach(tile => {
+            tile.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 100);
+            });
+        });
+
+        document.querySelector('.hide-button').addEventListener('click', function(e) {
+            e.stopPropagation();
+            const panel = this.closest('.welcome-panel');
+            panel.style.opacity = '0.5';
+            setTimeout(() => {
+                panel.style.opacity = '';
+            }, 500);
+        });
+
+        // Window controls functionality
+        document.querySelectorAll('.control-btn').forEach((btn, index) => {
+            btn.addEventListener('click', function() {
+                if (index === 2) { // Close button
+                    closeServerManager();
+                } else if (index === 0) { // Minimize
+                    const serverWindow = document.querySelector('.window');
+                    serverWindow.style.transform = 'scale(0.1)';
+                    serverWindow.style.opacity = '0';
+                    setTimeout(() => {
+                        serverWindow.style.display = 'none';
+                        if (window.parent && window.parent.minimizeServerManager) {
+                            window.parent.minimizeServerManager();
+                        }
+                    }, 300);
+                } else if (index === 1) { // Maximize
+                    const serverWindow = document.querySelector('.window');
+                    if (serverWindow.style.width === '100vw') {
+                        serverWindow.style.width = '90vw';
+                        serverWindow.style.height = '90vh';
+                        serverWindow.style.top = '5vh';
+                        serverWindow.style.left = '5vw';
+                    } else {
+                        serverWindow.style.width = '100vw';
+                        serverWindow.style.height = '100vh';
+                        serverWindow.style.top = '0';
+                        serverWindow.style.left = '0';
+                    }
+                }
+            });
+        });
+
+        // Navigation buttons
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.style.background = 'linear-gradient(to bottom, #e0e0e0, #d0d0d0)';
+                setTimeout(() => {
+                    this.style.background = '';
+                }, 100);
+            });
+        });
+    </script>
+</body>
+</html>

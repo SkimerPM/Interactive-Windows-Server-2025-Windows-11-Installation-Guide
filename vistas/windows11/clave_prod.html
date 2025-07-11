@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuración de Windows 11</title>
+    <link rel="stylesheet" href="../../css/windows11/clave_prod.css">
+    <link rel="stylesheet" href="../../css/windows11/ventana.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+</head>
+
+<body>
+    <div class="border">
+        <div class="window">
+            <div class="window-header" style="display: none;">
+                <div class="title-icon">
+                    <img src="../../img/settings-icon.png" alt="Configuración" class="windows-icon">
+                    <span class="title-text">Configuración de Windows 11</span>
+                </div>
+                <div class="window-controls">
+                    <div class="window-button">_</div>
+                    <div class="window-button">□</div>
+                    <div class="window-button red">✕</div>
+                </div>
+            </div>
+            <div class="content">
+                <h1 class="main-title">Clave de producto</h1>
+                
+                <p class="description">
+                    La clave del producto debe estar en la caja del DVD o en el recibo enviado por correo electrónico.
+                </p>
+                
+                <p class="format-info">
+                    Tiene un aspecto similar al siguiente: XXXXX-XXXXX-XXXXX-XXXXX-XXXXX
+                </p>
+                
+                <div class="input-section">
+                    <label class="input-label">Escribir la clave del producto</label>
+                    <input type="text" class="product-key-input" placeholder="Los guiones se agregarán automáticamente" id="productKey" maxlength="29">
+                    <div class="character-counter" id="charCounter">Quedan 25 caracteres</div>
+                </div>
+                
+                <div class="bottom-links">
+                    <a href="carga4.html" class="link" id="noProductKeyLink">No tengo clave de producto</a>
+                    <a href="#" class="link" id="privacyLink">Declaración de privacidad</a>
+                </div>
+            </div>
+
+            <!-- Modal de Ayuda -->
+            <div class="help-modal-overlay" id="modalOverlay"></div>
+            <div class="help-modal" id="modalHelp">
+                <div class="help-modal-header">
+                    <div class="help-modal-title">
+                        <div class="help-modal-icon">?</div>
+                        <span>Ayuda</span>
+                    </div>
+                    <div class="help-modal-close" id="modalClose">✕</div>
+                </div>
+                <div class="help-modal-content">
+                    <h3>Declaración de privacidad de Microsoft</h3>
+                    <p>La Declaración de privacidad de Microsoft se puede ver aquí: <a href="#">https://go.microsoft.com/fwlink/?LinkId=521839</a></p>
+                    <p>Puede revisar los términos vinculados pegando el enlace ascendente en su ventana del navegador una vez que se está ejecutando el software.</p>
+                    <br>
+                    <p>EULAID:RS3_RP_1_PR_es-es</p>
+                </div>
+            </div>
+
+            <div class="footer">
+                <div class="footer-links">
+                    <img src="/api/placeholder/80/24" alt="Microsoft logo" class="ms-logo">
+                    <a href="#" class="footer-link">Soporte</a>
+                    <a href="#" class="footer-link">Office</a>
+                </div>
+                <div class="buttons">
+                    <a href="configuracion.html" class="btn">Atrás</a>
+                    <a href="configuracion.html" class="btn btn-disabled">Siguiente</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../JS/script_logo.js"></script>
+    <script src="../../JS/clave_prod.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    // URL de la imagen de tu presentador
+    const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+    // Define los pasos específicos para la página de CLAVE DE PRODUCTO
+    const currentPageTutorialSteps = [
+        {
+            id: 'paso_introduccion_clave',
+            title: "Paso 4: Activar Windows",
+            content: `
+                <p>¡Seguimos adelante! En esta pantalla es donde normalmente introducirías tu <strong>clave de producto</strong>.</p>
+                <p>La clave es un código de 25 caracteres que demuestra que tu copia de Windows es genuina.</p>
+                <p>Cierra este mensaje para continuar.</p>
+            `,
+            presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+            modalAlignment: 'center',
+            triggerEvent: 'modalClosed'
+        },
+        {
+            id: 'paso_indicar_opcion_sin_clave',
+            title: "Continuar sin Clave",
+            content: `
+                <p>Para los propósitos de esta instalación de prueba, no usaremos una clave.</p>
+                <p>Por favor, busca y haz clic en el enlace <strong>"No tengo clave de producto"</strong> para continuar.</p>
+            `,
+            presenter: { url: WINDOWN_PRESENTER_IMG, position: 'top-left' },
+            modalAlignment: 'bottom-right',
+            triggerEvent: 'buttonClicked', // El tutorial avanzará cuando se haga clic en el elemento correcto
+            nextStepAction: 'noProductKeyLink' // El ID del enlace que esperamos que el usuario pulse
+        },
+        {
+            id: 'paso_final_confirmacion',
+            title: "¡Excelente!",
+            content: `
+                <p>Has elegido continuar sin una clave de producto.</p>
+                <p>En el siguiente paso, seleccionaremos la edición de Windows Server que queremos instalar.</p>
+                <p>¡Ahora serás redirigido!</p>
+            `,
+            presenter: { url: WINDOWN_PRESENTER_IMG, position: 'center-left' },
+            modalAlignment: 'center',
+            triggerEvent: 'modalClosed' // Este es el último paso informativo
+        }
+    ];
+
+    // Inicia el tutorial con los pasos definidos para esta página
+    startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+    // --- LISTENER PARA DISPARAR EL EVENTO PERSONALIZADO ---
+    // Escuchamos el clic en el enlace "No tengo clave de producto"
+
+    const noKeyLink = document.getElementById('noProductKeyLink');
+    if (noKeyLink) {
+        noKeyLink.addEventListener('click', (event) => {
+            // ¡MUY IMPORTANTE! Prevenimos que el enlace te lleve a la otra página inmediatamente.
+            // Esto nos da tiempo para mostrar el último modal del tutorial.
+            event.preventDefault(); 
+            
+            // Avisamos al tutorialManager que la acción correcta se ha realizado.
+            document.dispatchEvent(new CustomEvent('customActionTriggered', {
+                detail: {
+                    actionId: 'buttonClicked',
+                    elementId: 'noProductKeyLink'
+                }
+            }));
+
+            // Después de un breve retraso (para que el usuario lea el último modal), navegamos a la página.
+            setTimeout(() => {
+                window.location.href = noKeyLink.href;
+            }, 3000); // Espera 3 segundos antes de cambiar de página.
+        });
+    }
+});
+    </script>
+</body>
+
+</html>

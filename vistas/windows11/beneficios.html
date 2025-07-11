@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../css/windows11/beneficios.css">
+    <link rel="stylesheet" href="../../css/modal.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Beneficios para el Dispositivo</title>
+
+</head>
+
+<body>
+    <div class="installer-window">
+        <div class="left-panel">
+            <img src="../../img/w11/iconos_windows.png" alt="Iconos de aplicaciones de Microsoft" class="benefits-image">
+        </div>
+        
+        <div class="right-panel">
+            <div class="content scrollable">
+                <h1 class="title">Hay más beneficios esperando, solo inicie sesión</h1>
+                <p class="subtitle">Inicie sesión en su cuenta de Microsoft para hacer una copia de seguridad de su PC, proteger su dispositivo y comenzar a usar la configuración que prefiera.</p>
+                
+                <div class="benefits-list">
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M19.35,10.04C18.67,6.59,15.64,4,12,4C9.11,4,6.6,5.64,5.35,8.04C2.34,8.36,0,10.91,0,14a6,6,0,0,0,6,6H19a5,5,0,0,0,5-5c0-2.5-1.88-4.55-4.35-4.96Z"></path></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <h3>5 GB de almacenamiento gratuito en la nube</h3>
+                            <p>Disponga de copias de seguridad automáticas de sus archivos, fotos y vídeos, además de tenerlos protegidos y poder acceder a ellos fácilmente desde todos sus dispositivos.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3,3H9V9H3V3M15,3H21V9H15V3M3,15H9V21H3V15M15,15H21V21H15V15Z"></path></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <h3>Acceder a las versiones gratuitas de Word, Excel, PowerPoint y Outlook</h3>
+                            <p>Empiece a usar aplicaciones populares de forma gratuita para aumentar su productividad.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M7,2V5L4,7L7,9V12L2,17L7,22V19L10,17L7,15V12L10,10L12,12V15L14,17L17,19V22L22,17L17,12V9L20,7L17,5V2L12,7L7,2Z"></path></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <h3>Desbloquear más herramientas de creatividad</h3>
+                            <p>Descubra su potencial creativo con acceso a aplicaciones como Microsoft Designer.</p>
+                        </div>
+                    </div>
+
+                    <div class="benefit-item">
+                        <div class="benefit-icon">
+                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12,1L3,5V11C3,16.55,6.84,21.74,12,23C17.16,21.74,21,16.55,21,11V5L12,1Z"></path></svg>
+                        </div>
+                        <div class="benefit-text">
+                            <h3>Seguridad simplificada</h3>
+                            <p>La seguridad avanzada ayuda a proteger los datos del dispositivo.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="footer footer-center">
+                <button class="btn-primary" id="continueButton">Continuar</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="bottom-icons">
+        <div class="icon accessibility-icon" title="Accesibilidad"></div>
+        <div class="icon volume-icon" title="Volumen"></div>
+    </div>
+
+    <script src="../../JS/W11beneficios.js"></script>
+    <script src="../../JS/modal.js"></script>
+    <script src="../../JS/tutorialManager.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // URL de la imagen de tu presentador
+            const WINDOWN_PRESENTER_IMG = "https://static.vecteezy.com/system/resources/previews/027/191/074/non_2x/pixel-art-robot-cartoon-character-png.png";
+
+            // --- Pasos del tutorial (VERSIÓN SIMPLIFICADA) ---
+            const currentPageTutorialSteps = [
+                {
+                    id: 'paso_intro_beneficios',
+                    title: "Beneficios de tu Cuenta Microsoft",
+                    content: `
+                        <p>¡Hola! Antes de terminar, Microsoft te muestra algunos de los beneficios clave que obtienes al usar tu cuenta.</p>
+                        <p>Cierra este mensaje para verlos.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-left' },
+                    modalAlignment: 'center',
+                    triggerEvent: 'modalClosed'
+                },
+                {
+                    id: 'paso_clic_continuar',
+                    title: "Revisa y Continúa",
+                    content: `
+                        <p>Puedes tomarte un momento para leer las ventajas usando la barra de desplazamiento si lo deseas.</p>
+                        <p>Cuando estés listo para finalizar la configuración, simplemente haz clic en el botón <strong>"Continuar"</strong>.</p>
+                    `,
+                    presenter: { url: WINDOWN_PRESENTER_IMG, position: 'bottom-right' },
+                    modalAlignment: 'top',
+                    triggerEvent: 'modalClosed',
+                }
+            ];
+
+            // Inicia el tutorial
+            startTutorial(currentPageTutorialSteps, WINDOWN_PRESENTER_IMG);
+
+
+        });
+    </script>
+</body>
+
+</html>

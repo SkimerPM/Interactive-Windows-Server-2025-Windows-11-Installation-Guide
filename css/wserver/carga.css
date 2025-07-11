@@ -1,0 +1,31 @@
+.loading-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .main-title {
+            color: #3399ff;
+            font-size: 24px;
+            font-weight: 300;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI Light', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            text-align: left;
+        }
+
+        /* Spinner de carga */
+        .loading-spinner {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #e0e0e0;
+            border-top: 2px solid #3399ff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 0;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(130deg); }
+            50% { transform: rotate(250deg); }
+            100% { transform: rotate(360deg); }
+        }
